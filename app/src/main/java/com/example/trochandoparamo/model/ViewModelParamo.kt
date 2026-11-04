@@ -1,5 +1,6 @@
 package com.example.trochandoparamo.model
 
+import androidx.annotation.DrawableRes
 import com.example.trochandoparamo.data.CatEnum
 import com.example.trochandoparamo.data.DataSetParamo
 import com.example.trochandoparamo.data.FilterEnum

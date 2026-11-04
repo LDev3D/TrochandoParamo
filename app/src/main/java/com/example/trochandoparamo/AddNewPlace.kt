@@ -21,6 +21,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
@@ -38,6 +39,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldLabelPosition
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -56,9 +58,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.trochandoparamo.data.CatEnum
 import com.example.trochandoparamo.data.FilterEnum
 import com.example.trochandoparamo.data.ZoneEnum
+import com.example.trochandoparamo.model.NewPointUiModel
+import com.example.trochandoparamo.model.NewPointUiState
+import com.example.trochandoparamo.model.ViewModelParamo
 import com.example.trochandoparamo.ui.theme.TrochandoParamoTheme
 
 class AddNewPlace {
@@ -66,6 +72,7 @@ class AddNewPlace {
 
 @Composable
 fun AddNewPlaceScreen(
+    newPointModel: NewPointUiModel = NewPointUiModel(),
     saveNewPlace: () -> Unit,
     onCatSelected: (cat: CatEnum) -> Unit,
     onZoneSelected: (zone: ZoneEnum) -> Unit,
@@ -73,6 +80,7 @@ fun AddNewPlaceScreen(
     modifier: Modifier = Modifier
         .fillMaxSize()
 ){
+    val uiState by newPointModel.uiState.collectAsState()
     val scrollState = rememberScrollState()
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -113,6 +121,7 @@ fun AddNewPlaceScreen(
             ) {
                 DataInputTextLabel(R.string.qu_tipo_de_lugar_es, align = TextAlign.Center)
                 CatDropdownMenu(
+                    newPointUiModel = newPointModel,
                     icon = R.drawable.baseline_filter_vintage_24_light,
                     buttonDescription = R.string.seleccionar_categor_a,
                     onDropDownPressed = {
@@ -127,12 +136,15 @@ fun AddNewPlaceScreen(
             ) {
                 DataInputTextLabel(R.string.en_qu_p_ramo_se_encuentra, align = TextAlign.Center)
                 ZoneDropdownMenu(
+                    newPointModel,
                     icon = R.drawable.baseline_public_24_light,
                     buttonDescription = R.string.seleccionar_p_ramo,
                     onDropDownPressed = {
                         ZoneEnum.entries
                     },
-                    onFilterSelected = onZoneSelected
+                    onFilterSelected = {
+                        onZoneSelected
+                    }
                 )
             }
         }
@@ -147,7 +159,7 @@ fun AddNewPlaceScreen(
             OsmMapView()
         }
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.medium_padding)))
-        StarRating({})
+        StarRating(newPointUiModel = newPointModel, {})
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.medium_padding)))
         SaveCancelButtons(saveNewPlace)
     }
@@ -155,18 +167,19 @@ fun AddNewPlaceScreen(
 
 @Composable
 fun StarRating(
+    newPointUiModel: NewPointUiModel,
     onRatingChanged: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var rating by remember { mutableIntStateOf(0) } //
+    val uiState by newPointUiModel.uiState.collectAsState()
     Row(modifier = modifier) {
         repeat(5) { index ->
-            val isFilled = rating >= index
+            val isFilled = uiState.rat >= index
 
             IconButton(
                 onClick = {
                     onRatingChanged
-                    rating = index
+                    newPointUiModel.SetRatingStars(index)
                 }
             ) {
                 Image(
@@ -216,6 +229,7 @@ fun SaveCancelButtons(saveNewPlace: () -> Unit, modifier: Modifier = Modifier){
 
 @Composable
 fun ZoneDropdownMenu(
+    newPointUiModel: NewPointUiModel,
     @DrawableRes
     icon: Int,
     @StringRes
@@ -224,6 +238,7 @@ fun ZoneDropdownMenu(
     onFilterSelected: (filter: ZoneEnum) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val uiState by newPointUiModel.uiState.collectAsState()
     var expanded by remember { mutableStateOf(false) }
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -253,7 +268,12 @@ fun ZoneDropdownMenu(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = stringResource(buttonDescription),
+                    text = if(uiState.placeHolderZone.name == ZoneEnum.DEFAULT.name){
+                        stringResource(buttonDescription)
+                    }else{
+                        uiState.placeHolderZone.zoneName
+                    },
+                    fontSize = 15.sp,
                     fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.weight(1f)
@@ -275,8 +295,10 @@ fun ZoneDropdownMenu(
                 DropdownMenuItem(
                     text = { Text(filter.zoneName) },
                     onClick = {
+                        newPointUiModel.SetNewPointZone(filter)
                         onFilterSelected(filter)
-                        expanded = !expanded },
+                        expanded = !expanded
+                    },
                     colors = MenuItemColors(
                         textColor = MaterialTheme.colorScheme.primary,
                         leadingIconColor = MaterialTheme.colorScheme.primary,
@@ -293,6 +315,7 @@ fun ZoneDropdownMenu(
 
 @Composable
 fun CatDropdownMenu(
+    newPointUiModel: NewPointUiModel,
     @DrawableRes
     icon: Int,
     @StringRes
@@ -301,6 +324,7 @@ fun CatDropdownMenu(
     onFilterSelected: (filter: CatEnum) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val uiState by newPointUiModel.uiState.collectAsState()
     var expanded by remember { mutableStateOf(false) }
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -326,7 +350,12 @@ fun CatDropdownMenu(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = stringResource(buttonDescription),
+                    text = if(uiState.placeHolderCategory.name == CatEnum.DEFAULT.name){
+                        stringResource(buttonDescription)
+                    }else{
+                        uiState.placeHolderCategory.nameOfCat
+                    },
+                    fontSize = 15.sp,
                     fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.weight(1f)
@@ -348,6 +377,7 @@ fun CatDropdownMenu(
                 DropdownMenuItem(
                     text = { Text(filter.nameOfCat) },
                     onClick = {
+                        newPointUiModel.SetNewPointCategory(filter)
                         onFilterSelected(filter)
                         expanded = !expanded },
                     colors = MenuItemColors(
@@ -438,7 +468,7 @@ fun AddPlaceName(
 @Composable
 fun AddNewPlacePre(){
     TrochandoParamoTheme(darkTheme = true) {
-        AddNewPlaceScreen(saveNewPlace = {}, onCatSelected = {}, onImgClicked = {}, onZoneSelected = {})
+        AddNewPlaceScreen( saveNewPlace = {}, onCatSelected = {}, onImgClicked = {}, onZoneSelected = {})
     }
 }
 
@@ -446,6 +476,6 @@ fun AddNewPlacePre(){
 @Composable
 fun StarRatingPre(){
     TrochandoParamoTheme() {
-        StarRating({})
+        StarRating(newPointUiModel = NewPointUiModel(), {})
     }
 }
