@@ -1,0 +1,216 @@
+<resources>
+    <string name="app_name">TrochandoParamo</string>
+    <string name="acampada_apartamento">El apartamento</string>
+    <string name="acampada_apartamento_desc">El "apartamento" es un pequeño abrigo rocoso ubicado en la laguna del cazadero, dentro del páramo del Consuelo. Se trata de un lugar donde campesinos y montañistas se refugian del frío o la lluvia cuando aventuran por el páramo.</string>
+    <string name="acampada_apartamento_ubi">https://osm.org/go/YOBMF2H-?m=</string>
+    <string name="acampada_chiticuy">Zona de acampada río Chiticuy</string>
+    <string name="acampada_chiticuy_desc">Se trata de un pequeño claro dentro del bosque que está en los márgenes del río Chiticuy. El acampara allí garantiza una preciosa vista del amanecer que despliega todo el valle del tundama frente a los ojos.</string>
+    <string name="acampada_chiticuy_ubi">https://osm.org/go/YOAWGPh--?m=</string>
+    <string name="acampada_encantadas">Zona de acampada Lagunillas Encantadas</string>
+    <string name="acampada_encantadas_desc">El valle de lagunillas encantadas es un lugar donde puede resultar algo difícil encontrar sitio para tender la carpa. Sin embargo allí hay un par de lagunas estacionales que de vez en cuando se encuentran seca y permiten alzar una carpa en su lecho.</string>
+    <string name="acampada_encantadas_ubi">https://osm.org/go/YOAWTfTDY?m=</string>
+    <string name="acampada_guinas">Zona de acampada páramo de Güinas</string>
+    <string name="acampada_guinas_desc">Cuando se sube a la laguna negra en el páramo de Güinas es normal que inicie a caer la tarde mientras nos acercamos a la laguna, por ello es recomendable tender la carpa en esta zona de acampada con el fin de evitar complicaciones al armarla de noche.</string>
+    <string name="acampada_guinas_ubi">https://osm.org/go/YOBM1c4-?m=</string>
+    <string name="acampada_siete_cueros">Zona de acampada Bosque de Sietecueros</string>
+    <string name="acampada_siete_cueros_desc">Si se busca un lugar para tender la carpa luego de subir a la laguna del Alto, el bajar hasta el bosque de sietecueros puede ser una buena opción ya que allí hay un pequeño riachuelo que brinda agua fresca. Además, los frondosos árboles (Polylepis Cuadrijuga) brindan cobijo frente al viento.</string>
+    <string name="acampada_siete_cuerros_ubi">https://osm.org/go/YOAXL9d-?m=</string>
+    <string name="bosque_chiticuy">Bosque de Frailejones río Chiticuy</string>
+    <string name="bosque_chiticuy_desc">Cerca del nacimiento del río Chiticuy existe un pequeño bosque de frailejones donde podemos encontrar múltiples especies de espeletias que dan refugio a múltiples especies de anfibios e insectos de páramo.</string>
+    <string name="bosque_chiticuy_ubi">https://osm.org/go/YMq_tXf--?m=</string>
+    <string name="bosque_guinas">Bosque de Frailejones páramo de Güinas</string>
+    <string name="bosque_guinas_desc">A mitad de camino hacia la laguna negra en el páramo de Güinas hay un bosque de frailejones cuyas flores doradas compiten con el sol en belleza.</string>
+    <string name="bosque_guinas_ubi">https://osm.org/go/YOBM1x2--?m=</string>
+    <string name="bosque_pan_de_azucar">Bosque de Frailejones Páramo de Pan de Azúcar</string>
+    <string name="bosque_pan_de_azucar_desc">A mitad de camino entre el inicio del sendero del "14" y la laguna de pan de azúcar nos encontramos un bosque de Frailejones que convive con especies arbustivas y arbóreas de bosque tropical alto andino. Lindo lugar.</string>
+    <string name="bosque_pan_de_azucar_ubi">https://osm.org/go/YOAUt33--?m=</string>
+    <string name="bosque_siete_cueros">Bosque de Sietecueros</string>
+    <string name="bosque_siete_cueros_desc">Si nos encontramos en Cerinza y miramos hacia la laguna del alto, no podremos saber nunca la belleza que atesora el páramo detrás de esa enorme montaña, salvo si nos aventuramos a rodearla para encontrarnos en medio del bosque de sietecueros (Polylepis Cuadrijuga). Un lugar mágico para apreciar la belleza de la madre tierra y recordar la importancia de cuidarla.</string>
+    <string name="bosque_siete_cueros_ubi">https://osm.org/go/YOAXOoD--?m=</string>
+    <string name="cascada_chiticuy">Cascada Río Chiticuy</string>
+    <string name="cascada_chiticuy_desc">Desafortunadamente la acción humana contamina día a día la cuenca media y baja del río Chiticuy. Cosa que opaca su belleza. Basta con subir hasta el lugar donde nace éste río para comprender por qué fue un lugar tan importante para nuestros ancestros. La cascada del río chiticuy es una pequeña caída de agua que hay en el lugar donde nace el río. Durante temporadas secas es más bien poca el agua que cae por allí, pero si vamos durante inviernos fuertes, seguramente nos encontraremos con una magestuosa cascada.</string>
+    <string name="cascada_chiticuy_ubi">https://osm.org/go/YOAWHVX--?m=</string>
+    <string name="cascada_km_catorce">Cascada el "14"</string>
+    <string name="cascada_km_catorce_desc">Si subimos a la laguna de Pan de Azúcar por el sendero del "14", podremos descansar nuestros cuerpos con un baño de agua helada en la cascada del "14". Se trata de una pequeña caída de agua con un precioso pozo que está oculto debajo del puente que está después del "14".</string>
+    <string name="cascada_km_catorce_ubi">https://osm.org/go/YOAUmnK--?m=</string>
+    <string name="cascada_los_principes">Cascada laguna de los Príncipes</string>
+    <string name="cascada_los_principes_desc">Junto a una de las lagunas de esa zona se encuentra una pequeña cascada por la cual sale parte del agua que reposa en la laguna para juntarse con otros riachuelos que también nacen en el páramo y poco a poco ir incrementando caudal para brindar agua a varias poblaciones que hay río abajo.</string>
+    <string name="cascada_los_principes_ubi">https://osm.org/go/YOAVba0gM-?m=</string>
+    <string name="cascada_pan_de_azucar">Cascada páramo de Pán de Azúcar</string>
+    <string name="cascada_pan_de_azucar_desc">Una vez abandonamos el bosque tropical alto andino, el páramo de pan de azúcar nos recibe con una magestual cascada que vierte sus aguas en el río Surba. Si se acude allí en época seca seguramente no baje mucha agua pero en época de lluvias será seguramente una postal inolvidable.</string>
+    <string name="cascada_pan_de_azucar_ubi">https://osm.org/go/YOAU4j88Q-?m=</string>
+    <string name="cascada_zarza">Cascada el chorro</string>
+    <string name="cascada_zarza_desc">Una vez se alcance la parte más alta del sendero ecológico nos encontraremos con una gran caída de agua que asegura una experiencia emocionante y de cercanía con la naturaleza.</string>
+    <string name="cascada_zarza_ubi">https://osm.org/go/YOARJbcVY-?m=</string>
+    <string name="filo_cazadero">Peña de la laguna el cazadero</string>
+    <string name="filo_cazadero_desc">La laguna del cazadero se encuentra entre dos grandes cuchillas que se alzan imponentemente sobre esta. Si bien es posible trepar hasta su cima, puede ser algo peligroso si no se cuenta con el conocimiento ni las herramientas pertinentes.</string>
+    <string name="filo_cazadero_ubi">https://osm.org/go/YOBMFwf6X-?m=</string>
+    <string name="filo_cerinza">Cerro de la laguna el Alto</string>
+    <string name="filo_cerinza_desc">Mientras se asciende a la laguna del Alto, tendremos a nuestras espaldas el valle de Cerinza. Una vista espectacular.</string>
+    <string name="filo_cerinza_ubi">https://osm.org/go/YOAXhZ1Mq-?m=</string>
+    <string name="filo_el_alto">Oído de la Laguna</string>
+    <string name="filo_el_alto_desc">Dentro de todas las cosmogonías (hidrogonías) andinas, se le otorga agencia y cuerpo a las lagunas, ríos y humedales. En la laguna del Alto (si bien hay quienes se empeñan en llamarla "careperro", es importante mencionar que las personas que habitan el valle de Cerinza la llaman laguna del Alto) hay un lugar que las personas de la localidad denominan como el oído de la laguna. Y aparte de la increíble vista, es allí donde las personas van a hablar con la laguna.</string>
+    <string name="filo_el_alto_ubi">https://osm.org/go/YOAXhBwHt-?m=</string>
+    <string name="filo_fin_del_mundo">Alto del Boquerón</string>
+    <string name="filo_fin_del_mundo_desc">Antes de llegar a la laguna negra en el páramo de Güinas, podremos ubicarnos en "El boquerón", un cerro desde el cual se accede a la laguna y que dependiendo del clima nos permitirá ver las lagunas que se encuentran más abajo.</string>
+    <string name="filo_fin_del_mundo_ubi">https://osm.org/go/YOBMf~c~n-?m=</string>
+    <string name="filo_grande">Cerro de la laguna grande</string>
+    <string name="filo_grande_desc">Antes de iniciar el descenso hacia la laguna grande, en el páramo del Consuelo se alza un cerro imponente. Llegar hasta su cima es toda una azaña pero que sin duda alguna, vale la pena.</string>
+    <string name="filo_grande_ubi">https://osm.org/go/YOBD6E7mJ-?m=</string>
+    <string name="filo_lajas">Cerro de las lajas</string>
+    <string name="filo_lajas_desc">A un costado de la laguna de las lajas, en el páramo de la Rusia se encuentra el cerro de las lajas. Una formación con una forma bastante interesante y una vista preciosa.</string>
+    <string name="filo_lajas_ubi">https://osm.org/go/YOAU3zeK--?m=</string>
+    <string name="filo_pan_de_azucar">Cerro del pan de azucar</string>
+    <string name="filo_pan_de_azucar_desc">Al nororiente de la laguna de Pan de Azúcar se encuentra el cerro del pan de Azucar, custodio eterno de la laguna y que ofrece una de las mejores vistas del amanecer en la zona.</string>
+    <string name="filo_pan_de_azucar_ubi">https://osm.org/go/YOAXA5An--?m=</string>
+    <string name="filo_pikacho_consuelo">Cerro "El Picacho"</string>
+    <string name="filo_pikacho_consuelo_desc">El páramo del Consuelo se caracteriza por tener una geografía abrupta y quebrada, además entre los páramos de la cadena Guantiba-La Rusia es el que alcanza mayores altitudes. Allí encontramos "El picacho", el cerro más alto de la zona que con sus casi 4300 metros de altura, nos recuerda lo pequeños que somos los seres humanos en comparación de la naturaleza.</string>
+    <string name="filo_pikacho_consuelo_ubi">https://osm.org/go/YOBMcJiU--?m=</string>
+    <string name="laguna_cazadero">Laguna el cazadero</string>
+    <string name="laguna_cazadero_desc">En el páramo del consuelo hay dos lagunas bastante importantes para sus gentes: La laguna del cazadero y la laguna negra. La laguna del cazadero es el sitio de umbral que conecta las tierras bajas de Santander con Boyacá a través de un ancestral camino de herradura. La laguna del cazadero es la laguna donde está permitido (por los entes que habitan el páramo y por sus gentes) pescar o acercarse.</string>
+    <string name="laguna_cazadero_ubi">https://osm.org/go/YOBMQoIq--?m=</string>
+    <string name="laguna_chica">Laguna chica</string>
+    <string name="laguna_chica_desc">Mientras nos acercamos a la laguna de pan de azúcar podremos acercarnos a varias lagunas encantadas que con el tiempo su nombre ancestral ha caído en el olvido. Pero cuidado, no por no tener nombre dejan de estar encantadas.</string>
+    <string name="laguna_chica_ubi">https://osm.org/go/YOAU7qwh-?m=</string>
+    <string name="laguna_de_los_patos">Laguna de los patos</string>
+    <string name="laguna_de_los_patos_desc">Cerca a la laguna del alto, en Cerinza, se encuentra un nutrido complejo lagunar dentro del cual está la laguna de los patos que se caracteriza por el perqueño cerro que la custodia y sus aguas claras.</string>
+    <string name="laguna_de_los_patos_ubi">https://osm.org/go/YOAXOHpc-?m=</string>
+    <string name="laguna_el_alto">Laguna del alto</string>
+    <string name="laguna_el_alto_desc">En el valle de Cerinza se tiene especial aprecio y respeto por la laguna del alto. Si bien hay personas que insisten en llamarla "laguna careperro", las y los habitantes de Cerinza se refieren a esta laguna como la laguna del alto o la laguna negra. Una laguna encantada a la que el primer fin de semana de cada año acuden cientos de feligreses a celebrar una eucarestía a sus orillas, al tiempo que hablan con la laguna y le encargan protección y buenas cocechas.</string>
+    <string name="laguna_el_alto_ubi">https://osm.org/go/YOAXhHCp-?m=</string>
+    <string name="laguna_el_filo">Laguna el filo</string>
+    <string name="laguna_el_filo_desc">En las faldas del cerro de pan de azúcar se encuentra una pequeña laguna estacional que cuando es el momento apropiado, entrega un reflejo claro del cielo.</string>
+    <string name="laguna_el_filo_ubi">https://osm.org/go/YOAXAjR4D-?m=</string>
+    <string name="laguna_el_pozito">Laguna el pozito</string>
+    <string name="laguna_el_pozito_desc">Escondida entre el complejo lagunar del Alto, se encuentra esta pequeña lagunita que desde el ángulo indicado, pareciera ser la puerta de entrada al páramo del Consuelo.</string>
+    <string name="laguna_el_pozito_ubi">https://osm.org/go/YOAXLd1js-?m=</string>
+    <string name="laguna_el_venado">Laguna del venado</string>
+    <string name="laguna_el_venado_desc">La laguna del venado se encuentra en el valle de lagunillas encantadas y es un pequeño y precioso cuerpo de agua que brinda el preciado líquido a los venados que habitan el páramo. </string>
+    <string name="laguna_el_venado_ubi">https://osm.org/go/YOAWWO6Ls?m=</string>
+    <string name="laguna_encantada">Laguna encantada</string>
+    <string name="laguna_encantada_desc">En el valle de lagunillas encantadas está una de esas algunas encantadas. Es un lugar bonito que pareciera llevarnos a otro planeta por su geografía.</string>
+    <string name="laguna_encantada_ubi">https://osm.org/go/YOAWQtVRL-?m=</string>
+    <string name="laguna_esmeralda">Laguna Esmeralda (Laguna del chicha)</string>
+    <string name="laguna_esmeralda_desc">En el páramo del Consuelo, antes de llegar a la laguna del cazadero, podremos desviar un poco a mano derecha según se baja para encontrarnos con la laguna esmeralda (también conocida como laguna del chicha). Una laguna de aguas cristalinas cuya vegetación marina otorga un color verde resplandeciente que remite a la piedra preciosa.</string>
+    <string name="laguna_esmeralda_ubi">https://osm.org/go/YOBMGUUAe-?m=</string>
+    <string name="laguna_gacha">Laguna Gacha</string>
+    <string name="laguna_gacha_desc">En el valle de lagunillas encantadas está esta pequeña laguna que pareciera estar rodeada por frailejones (gachas) guardianes de su magia.</string>
+    <string name="laguna_gacha_ubi">https://osm.org/go/YOAWQmgnS?m=</string>
+    <string name="laguna_grande">Laguna Grande</string>
+    <string name="laguna_grande_desc">En la sección suroccidental del páramo del Consuelo nos encontramos con la laguna Grande, un imponente cuerpo de agua que alberga distintos tipos de peces y brinda una vista espectacular.</string>
+    <string name="laguna_grande_ubi">https://osm.org/go/YOBDz4kSc?m=</string>
+    <string name="laguna_hoyo_azul">Laguna hoyo azul</string>
+    <string name="laguna_hoyo_azul_desc">En las faldas del picacho (por su cara sur), en el páramo del Consuelo podremos encontrar la laguna hoyo azul. Un cuerpo de agua color azul que resguarda con discreción su belleza de visitantes no deseados.</string>
+    <string name="laguna_hoyo_azul_ubi">https://osm.org/go/YOBMZ9QjO?m=</string>
+    <string name="laguna_la_estrella">Laguna la estrella</string>
+    <string name="laguna_la_estrella_desc">Si camino a la laguna grande, en el páramo del Consuelo nos desviamos un poco a mano derecha según se va hacia la laguna, podremos ver -y descender- a la laguna la estrella. Evitar meterse o contaminar la laguna (esa y cualquier otra) ya que de ella obtienen agua las comunidades campesinas de la zona.</string>
+    <string name="laguna_la_estrella_ubi">https://osm.org/go/YOBDvwxKs?m=</string>
+    <string name="laguna_las_lajas">Laguna de las lajas</string>
+    <string name="laguna_las_lajas_desc">Al oriente del páramo de la Rusia se encuentra la laguna de las lajas, abrigada entre imponentes cerros que dan al lugar un aura sobrecogedora.</string>
+    <string name="laguna_las_lajas_ubi">https://osm.org/go/YOAU37Vnm?m=</string>
+    <string name="laguna_los_patos_pan_de_azucar">Laguna de los patos (páramo de pan de azúcar)</string>
+    <string name="laguna_los_patos_pan_de_azucar_desc">Escondida en el valle de lagunillas encantadas se encuentra la laguna de los patos. Un pequeño cuerpo de agua estacionario que durante temporadas ofrece un lugar de descanso para patos que habitan el páramo u otras aves migratorias.</string>
+    <string name="laguna_de_los_patos_pan_de_azucar_ubi">https://osm.org/go/YOAWWlQko?m=</string>
+    <string name="laguna_los_patos_principes">Laguna de los patos (Páramo de la Rusia)</string>
+    <string name="laguna_los_patos_principes_desc">Junto a la laguna de los príncipes se encuentra la laguna de los patos, una bella lagunita que abre la puerta por ese sendero.</string>
+    <string name="laguna_los_patos_principes_ubi">https://osm.org/go/YOAVa2S7v?m=</string>
+    <string name="laguna_los_principes">Laguna de los príncipes</string>
+    <string name="laguna_los_principes_desc">Ignoramos a qué debe su nombre la laguna de los príncipes, en el páramo de la Rusia. Pero quizá esté relacionado con la relación profunda que sostenían en términos materiales y espirituales nuestros ancestros muiscas con ese territorio. El origen de su nombre permanece como un misterio pero su magia sigue viva hoy en día.</string>
+    <string name="laguna_de_los_principes_ubi">https://osm.org/go/YOAVblm0~?m=</string>
+    <string name="laguna_negra">Laguna negra (páramo del Consuelo)</string>
+    <string name="laguna_negra_desc">La otra laguna que resalta dentro del páramo del Consuelo es la laguna negra. Los pobladores de la zona le atribuyen a esta un temperamento volátil y malgeniado. Así que sugieren no acercarse ni dormir cerca para evitar un mal clima o algo peor. A pesar de su mal genio, la laguna negra es un lugar sagrado y hermoso que debemos respetar y cuidar.</string>
+    <string name="laguna_negra_ubi">https://osm.org/go/YOBGvrsWw-?m=</string>
+    <string name="laguna_negra_guinas">Laguna negra (páramo de Güinas)</string>
+    <string name="laguna_negra_guinas_desc">Cuando vamos hacia la laguna negra en el páramo de Güinas, al llegar al boquerón nos encontraremos con un letrero que indica nuestra proximidad a la laguna. El letrero está torpemente ubicado en un lugar muy importante: Un sitio de umbral que nos abre la puerta al sagrado mundo de la laguna negra. Un lugar reservado para almas limpias y livianas porque de entrar allí una persona no deseada, la laguna desatará una tormenta.</string>
+    <string name="laguna_negra_güinas_ubi">https://osm.org/go/YOBNKjtQE-?m=</string>
+    <string name="laguna_de_pan_de_azucar">Laguna de Pan de Azúcar</string>
+    <string name="laguna_de_pan_de_azucar_desc">La laguna de Pan de Azúcar no solamente da nombre al páramo en el cual se encuentra sino que además es la madre del río Surba, que es el río del que se alimenta una buena parte de la población del municipio de Duitama. Lugar precioso e imperdible.</string>
+    <string name="laguna_de_pan_de_azucar_ubi">https://osm.org/go/YOAWUOlcb-?m=</string>
+    <string name="laguna_de_las_tres_cruces">Laguna de las tres cruces (zona del Alto)</string>
+    <string name="laguna_de_las_tres_cruces_desc">La laguna de las tres cruces es un lugar precioso del que el municipio de Santa Rosa de Viterbo toma buena parte de su agua para subsistir. Si esta laguna desaparece, detrás se van las personas que habitan ese territorio.</string>
+    <string name="laguna_de_las_tres_cruces_ubi">https://osm.org/go/YOAXI4H6u-?m=</string>
+    <string name="laguna_seca">Laguna seca (zona del Alto)</string>
+    <string name="laguna_seca_desc">La laguna seca en la zona del alto es un pantano grande que quizá hace muchos años fue una gran laguna (de allí su nombre) pero que hoy día se ha venido secando hasta convertirse en un pantano. Éste y otros pantanos son casi igual de importantes que las lagunas en la regulación hídrica, por eso hay que cuidarlos.</string>
+    <string name="laguna_seca_ubi">https://osm.org/go/YOAXLaz2f-?m=</string>
+    <string name="laguna_seca_guinas">Laguna seca (páramo de Güinas)</string>
+    <string name="laguna_seca_guinas_desc">La laguna seca en el páramo de Güinas es una laguna que permanece seca una buena parte del año y que cuando está seca, pinta una aterradora postal del futuro que tendremos que afrontar si no tomamos acciones contundentes en contra del cambio climático y los factores que lo aceleran.</string>
+    <string name="laguna_seca_guinas_ubi">https://osm.org/go/YOBM1aADv-?m=</string>
+    <string name="rio_chiticuy">Río Chiticuy</string>
+    <string name="rio_chiticuy_desc">El río Chiticuy es un río que antaño tuvo mucha importancia para nuestros ancestros muiscas que habitaron el valle del Tundama pero que hoy en día ha caído en el olvido y se encuentra muy contaminado debido al vertimiento de aguas negras que hace el municipio de Santa Rosa de Viterbo a sus aguas. Afortunadamente en su cuenta alta, el río Chiticuy sigue vivo.</string>
+    <string name="rio_chiticuy_ubi">https://osm.org/go/YOAWGbqJe-?m=</string>
+    <string name="rio_salguera">Riachuelo Salguera</string>
+    <string name="rio_salguera_desc">Con la cantidad de lagunitas que hay en el páramo del Consuelo era de esperarse que se desprendan de estas múltiples arroyos y riachuelos como el río Salguera del que toman su agua múltiples veredas de la zona.</string>
+    <string name="rio_salguera_ubi">https://osm.org/go/YOBJXs3l6-?m=</string>
+    <string name="rio_surba">Río Surba</string>
+    <string name="rio_surba_desc">El río Surba es el río del que toman su agua una buena parte de los habitantes del municipio de Duitama. Pero es más: El Surba es un río que históricamente ha sido vital para nuestros ancestros y que hoy tenemos descuidado y olvidado. Un lugar para proteger y cuidar.</string>
+    <string name="rio_surba_ubi">https://osm.org/go/YOAUtSVxk-?m=</string>
+    <string name="sendero_consuelo">Sendero Páramo del Consuelo</string>
+    <string name="sendero_consuelo_desc">Dentro de las múltiples formas que hay para ingresar al páramo del Consuelo, una es bajarse del carro o bus en el sector conocido como Caracoles Alto. Y una vez allí buscar el letrero de madera que indica el inicio del sendero. Tener cuidado de no ingresar a predios privados sin autorización.</string>
+    <string name="sendero_consuelo_ubi">https://osm.org/go/YOBJzVULA-?m=</string>
+    <string name="sendero_grande">Sendero Laguna Grande</string>
+    <string name="sendero_grande_desc">Para ir a la laguna grande, se puede dirigir en carro por la vía que de Belén comunica con el municipio del Encino y antes de llegar al boquerón, fijarse en una discreta desviación a mano derecha que hay según se sube. Allí inicia el sendero.</string>
+    <string name="sendero_grande_ubi">https://osm.org/go/YOBDuYedh-?m=</string>
+    <string name="sendero_guinas">Sendero Páramo de Güinas</string>
+    <string name="sendero_guinas_desc">Camino a Susacón, descender del vehículo o bus antes de llegar a la capilla y buscar un camino destapado que se encuentra a mano izquierda de la vía según se va hacia Susacón. Es algo difícil de encontrar, paciencia. Tener cuidado de no ingresar a predios privados.</string>
+    <string name="sendero_guinas_ubi">https://osm.org/go/YOBM8G9AO-?m=</string>
+    <string name="sendero_km_catorce">Sendero el "14"</string>
+    <string name="sendero_km_catorce_desc">Dentro de las múltiples maneras que hay para llegar hasta la laguna de Pan de Azúcar, el sendero del "14" es uno de los más bellos y mejor conservados en términos ecológicos (a pesar de unos segmentos de bosque que han sido invadidos y colonizados por pino pátula, una especie invasora).</string>
+    <string name="sendero_km_catorce_ubi">https://osm.org/go/YOAUm4NCv-?m=</string>
+    <string name="sendero_principes">Sendero laguna de los príncipes</string>
+    <string name="sendero_principes_desc">Para llegar a la laguna de los príncipes será necesario seguir la carretera que lleva de Duitama hasta Charalá y una vez se llegue al sector de "buenos aires" tomar la desviación a mano derecha según se sube. Andar por esa destapada y tomar la primera desviación hacia la izquierda que se encuentre. Una vez se alcance esa desviación es recomendable bajar del vehículo ya que la carretera está en mal estado.</string>
+    <string name="sendero_principes_ubi">https://osm.org/go/YOAVkDZkU-?m=</string>
+    <string name="sendero_siete_cueros">Sendero Bosque de Sietecueros</string>
+    <string name="sendero_siete_cueros_desc">Sendero alternativo para subir a la laguna del alto o descender de esta hacia Cerinza pasando por el bosque de Sietecueros.</string>
+    <string name="sendero_siete_cueros_ubi">https://osm.org/go/YOAXnQexv-?m=</string>
+    <string name="sendero_zarza">Sendero ecológico "la zarza" </string>
+    <string name="sendero_zarza_desc">Sendero ecológio la zarza. Se llega por la vereda la trinidad en Duitama.</string>
+    <string name="sendero_zarza_ubi">https://osm.org/go/YOAQfhGB2-?m=</string>
+    <string name="sendero_lajas">Sendero laguna de las Lajas</string>
+    <string name="sendero_lajas_desc">Camino a Charalá nos detendremos en la curva que hay antes de llegar al sector conocido como "La osa". Allí nos adentraremos a mano derecha por el páramo siguiendo el filo de la montaña en dirección nororiente.</string>
+    <string name="sendero_lajas_ubi">https://osm.org/go/YOAUarO9y--?m=</string>
+    <string name="default_name">Lorem Ipsum</string>
+    <string name="default_desc">Lorem Ipsum tada mili cunt asun tipo junger pri. Lorem Ipsum tada mili cunt asun tipo junger pri. Lorem Ipsum tada mili cunt asun tipo junger pri.</string>
+    <string name="default_ubi">https://osm.org/go/YOAVkDZkU-?m=</string>
+    <string name="a_d_nde_te_vas_a_aventurar_en_esta_ocasi_n">¿A dónde te vas a aventurar en esta ocasión?</string>
+    <string name="quiero_buscar_lugares_por">"Quiero buscar lugares por: "</string>
+    <string name="zona">Zona</string>
+    <string name="categor_a">Categoría</string>
+    <string name="filtrar_por_zonas">Filtrar por zonas</string>
+    <string name="filtrar_por_tipo_de_lugar">Filtrar por tipo de lugar</string>
+    <string name="explorar_todos_los_lugares">Explorar todos los lugares</string>
+    <string name="qu_lugar_quieres_explorar">¿Qué lugar quieres explorar?</string>
+    <string name="lugares_filtrados_seg_n">"Lugares filtrados según: "</string>
+    <string name="detalles_de">"Detalles de: "</string>
+    <string name="filtrar_por_reas_para_acampar">Filtrar áreas para acampar</string>
+    <string name="filtrar_por_zonas_de_bosque">Filtrar por bosques</string>
+    <string name="filtrar_por_zonas_de_cascada">Filtrar por cascadas</string>
+    <string name="filtrar_por_zonas_de_cerros">Filtrar por cerros y miradores</string>
+    <string name="filtrar_por_lagunas">Filtrar por lagunas</string>
+    <string name="filtrar_por_rios">Filtrar por riachuelos</string>
+    <string name="filtrar_por_senderos">Filtrar por senderos</string>
+    <string name="filtrar_consuelo">Filtrar páramo del Consuelo</string>
+    <string name="filtrar_pan_de_azucar">Filtrar páramo de Pan de Azúcar</string>
+    <string name="filtrar_siscunsi">Filtrar páramo de Siscunsí</string>
+    <string name="filtrar_pisba">Filtrar páramo de Pisba</string>
+    <string name="filtrar_rusia">Filtrar páramo de la Rusia</string>
+    <string name="filtrar_alto">Filtrar zona laguna del Alto</string>
+    <string name="filtrar_zarza">Filtrar sendero ecológico la zarza</string>
+    <string name="filtrar_guinas">Filtrar páramo de Güinas</string>
+    <string name="add_image_for_new_place_button">Add Image for new place Button</string>
+    <string name="nombre_del_punto_de_inter_s">Nombre del punto de interés</string>
+    <string name="descripci_n_del_lugar">Descripción del lugar</string>
+    <string name="selecciona_una_imagen">Selecciona una imagen</string>
+    <string name="nombre_del_punto_de_inter_s_label">Nombre del punto de interés</string>
+    <string name="descripci_n_del_punto_de_inter_s">Descripción del punto de interés</string>
+    <string name="ubicaci_n_del_punto_de_inter_s">Ubicación del punto de interés</string>
+    <string name="qu_tipo_de_lugar_es">¿Qué tipo de lugar es?</string>
+    <string name="en_qu_p_ramo_se_encuentra">¿En qué páramo se encuentra?</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="a_adir_un_nuevo_lugar">Añadir un nuevo lugar</string>
+    <string name="a_adir_un_lugar_nuevo">Añadir un lugar nuevo</string>
+    <string name="seleccionar_categor_a">Seleccionar categoría</string>
+    <string name="seleccionar_p_ramo">Seleccionar páramo</string>
+    <string name="bot_n_para_ir_atr_s">Botón para ir atrás</string>
+    <string name="rating_star">Rating Star</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_logo">70.dp</dimen>
+    <dimen name="bar_padding">20.dp</dimen>
+    <dimen name="medium_padding">15.dp</dimen>
+    <dimen name="small_padding">8.dp</dimen>
+    <dimen name="dropdown_menu_x">300.dp</dimen>
+    <dimen name="dropdown_menu_y">50.dp</dimen>
+    <dimen name="filter_image">100.dp</dimen>
+    <dimen name="button_elevation">8.dp</dimen>
+    <dimen name="button_elevation_focused">6.dp</dimen>
+    <dimen name="button_elevation_pressed">2.dp</dimen>
+    <dimen name="new_place_name_textfield_x">300.dp</dimen>
+    <dimen name="new_place_name_textfield_y">60.dp</dimen>
+    <dimen name="new_place_desc_textfield_x">300.dp</dimen>
+    <dimen name="new_place_desc_textfield_y">200.dp</dimen>
+    <dimen name="new_place_text_input_label_size">10.sp</dimen>
+    <dimen name="add_new_place_btn_to_bottom">100.dp</dimen>
+</resources>
