@@ -78,18 +78,6 @@ data class DataSetParamo (
     ),
     val puntos: MutableList<PuntoInteres> = mutableListOf(
         PuntoInteres(
-            categoria = CatEnum.DEFAULT,
-            name = R.string.default_name,
-            description = R.string.default_desc,
-            imgs = mutableListOf(
-                R.drawable.lagunapandeazucar,
-                R.drawable.lagunapandeazucar2
-            ),
-            ubi = R.string.default_ubi,
-            zona = ZoneEnum.DEFAULT,
-            ratingStars = 4
-        ),
-        PuntoInteres(
             categoria = CatEnum.ACAMPADA,
             name = R.string.acampada_apartamento,
             description = R.string.acampada_apartamento_desc,
