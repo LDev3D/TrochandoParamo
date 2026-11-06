@@ -19,4 +19,5 @@
     <dimen name="new_place_text_input_label_size">10.sp</dimen>
     <dimen name="add_new_place_btn_to_bottom">100.dp</dimen>
     <dimen name="list_item_width">100.dp</dimen>
+    <dimen name="place_image_medium_size">300.dp</dimen>
 </resources>

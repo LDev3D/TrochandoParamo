@@ -424,7 +424,10 @@ data class DataSetParamo (
             description = R.string.laguna_gacha_desc,
             imgs = mutableListOf(
                 R.drawable.lagunagacha,
-                R.drawable.lagunagacha2
+                R.drawable.lagunagacha2,
+                R.drawable.laguna_gacha_3,
+                R.drawable.laguna_gacha_4,
+                R.drawable.laguna_gacha_5
             ),
             ubi = R.string.laguna_gacha_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
