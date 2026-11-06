@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -40,7 +39,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.trochandoparamo.data.DataSetParamo
 import com.example.trochandoparamo.data.DestinationsEnum
 import com.example.trochandoparamo.data.FilterEnum
 import com.example.trochandoparamo.data.FilterItem
@@ -49,11 +47,13 @@ import com.example.trochandoparamo.ui.theme.TrochandoParamoTheme
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.trochandoparamo.data.CatEnum
+import com.example.trochandoparamo.data.ZoneEnum
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -98,10 +98,10 @@ fun TrochandoAppBar(canNavigateBack: Boolean, navigateUp: () -> Unit,modifier: M
 
 @Composable
 fun TrochandoAppScreen(
-    viewModel: ViewModelParamo = ViewModelParamo(),
+    viewModel: ViewModelParamo = viewModel(),
     navHostController: NavHostController = rememberNavController(),
     modifier: Modifier = Modifier){
-    val uiState by viewModel.UiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
     val backStackEntry by navHostController.currentBackStackEntryAsState()
     val currentScreen = DestinationsEnum.valueOf(
         backStackEntry?.destination?.route?: DestinationsEnum.HOME.name
@@ -109,7 +109,6 @@ fun TrochandoAppScreen(
 
     Scaffold(
         topBar = {
-            println("Aaaaaaa ${currentScreen}")
             TrochandoAppBar(
                 canNavigateBack = currentScreen.name != DestinationsEnum.HOME.name,
                 navigateUp = {
@@ -129,12 +128,15 @@ fun TrochandoAppScreen(
                 TrochandoHome(
                     viewModel = viewModel,
                     onFilterKindSelected = {
-                        viewModel.setCurrentFilter(it)
-                        if(it == FilterEnum.ALL){
-                            navHostController.navigate(DestinationsEnum.FILTERED.name)
+                        viewModel.SetCurrentFilterList(it)
+                        if (viewModel.uiState.value.currentFilter == FilterEnum.ALL){
+                            navHostController.navigate(route = DestinationsEnum.FILTERED.name)
                         }
                     },
-                    onSpecificFilterSelected = {},
+                    onSpecificFilterSelected = {
+                        viewModel.SetZoneOrCatToPerformSearch(GetZoneOrCatToPerformSearch(it).first, GetZoneOrCatToPerformSearch(it).second)
+                        navHostController.navigate(route = DestinationsEnum.FILTERED.name)
+                    },
                     onNewPlacePressed = {
                         navHostController.navigate(DestinationsEnum.NEW.name)
                     }
@@ -143,7 +145,7 @@ fun TrochandoAppScreen(
             composable(
                 route = DestinationsEnum.FILTERED.name
             ){
-
+                FilteredList(points = viewModel.getFilteredList(), onPointClick = {})
             }
             composable (
                 route = DestinationsEnum.NEW.name
@@ -159,14 +161,30 @@ fun TrochandoAppScreen(
     }
 }
 
+fun GetZoneOrCatToPerformSearch(filterItem: FilterItem): Pair<CatEnum, ZoneEnum>{
+    var cat: CatEnum = CatEnum.DEFAULT
+    var zone: ZoneEnum = ZoneEnum.DEFAULT
+    for(x in CatEnum.entries){
+        if (filterItem.enumKind.toString() == x.name){
+            cat = x
+        }
+    }
+    for(y in ZoneEnum.entries){
+        if(filterItem.enumKind.toString() == y.name){
+            zone = y
+        }
+    }
+    return cat to zone
+}
+
 @Composable
 fun TrochandoHome(
     viewModel: ViewModelParamo,
     onNewPlacePressed: () -> Unit,
     onFilterKindSelected: (filter: FilterEnum) -> Unit,
-    onSpecificFilterSelected: () -> Unit,
+    onSpecificFilterSelected: (filter: FilterItem) -> Unit,
     modifier: Modifier = Modifier){
-    val uiState by viewModel.UiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
     Column() {
         Text(
             text = stringResource(DestinationsEnum.HOME.screenTittle),
@@ -187,7 +205,7 @@ fun TrochandoHome(
 
         Spacer(modifier = modifier.padding(top = dimensionResource(R.dimen.filter_image)))
         if (uiState.showingFilterList){
-            filtersList(onFilterSelected = onSpecificFilterSelected, uiState.currentFilterList)
+            FiltersList(onFilterSelected = onSpecificFilterSelected, uiState.currentFilterList)
         }
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.add_new_place_btn_to_bottom)))
         Row(
@@ -253,7 +271,6 @@ fun MinimalDropdownMenu(
             onDismissRequest = { expanded = false }
         ) {
             for (filter in onDropDownPressed()){
-                println("Añadiendo item: ${filter.name}")
                 DropdownMenuItem(
                     text = { Text(stringResource(filter.displayText)) },
                     onClick = {
@@ -274,8 +291,8 @@ fun MinimalDropdownMenu(
 }
 
 @Composable
-fun filtersList(
-    onFilterSelected: () -> Unit,
+fun FiltersList(
+    onFilterSelected: (filter: FilterItem) -> Unit,
     filters: List<FilterItem>,
     modifier: Modifier = Modifier
 ){
@@ -285,7 +302,7 @@ fun filtersList(
     ) {
         items(filters){
             filterElement ->
-            FilterButton(onClick = onFilterSelected, filterItem = filterElement)
+            FilterButton(onClick = {onFilterSelected(filterElement)}, filterItem = filterElement)
         }
     }
 }
