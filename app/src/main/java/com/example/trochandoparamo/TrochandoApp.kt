@@ -145,7 +145,15 @@ fun TrochandoAppScreen(
             composable(
                 route = DestinationsEnum.FILTERED.name
             ){
-                FilteredList(points = viewModel.getFilteredList(), onPointClick = {})
+                FilteredList(points = viewModel.getFilteredList(), onPointClick = {
+                    viewModel.setCurrentPlace(it)
+                    navHostController.navigate(DestinationsEnum.DETAILS.name)
+                })
+            }
+            composable(
+                route = DestinationsEnum.DETAILS.name
+            ){
+                PlaceDisplayScreen(placeToDisplay = uiState.currentInterestPoint)
             }
             composable (
                 route = DestinationsEnum.NEW.name

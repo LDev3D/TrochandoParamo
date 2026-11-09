@@ -77,7 +77,7 @@ fun ListElement(
     onClick:(PuntoInteres) -> Unit,
     modifier: Modifier = Modifier){
     TextButton(
-        onClick = { onClick },
+        onClick = {onClick(interestPoint)} ,
         shape = RectangleShape,
         border = null,
         modifier = Modifier.size(

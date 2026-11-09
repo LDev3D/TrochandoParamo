@@ -76,4 +76,13 @@ class ViewModelParamo: ViewModel() {
         }
         return filteredList
     }
+
+    fun setCurrentPlace(place: PuntoInteres){
+        _uiState.update {
+            uiState ->
+            uiState.copy(
+                currentInterestPoint = place
+            )
+        }
+    }
 }

@@ -48,8 +48,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun OsmMapView(
     modifier: Modifier = Modifier,
-    latitude: Double = 4.6097,
-    longitude: Double = -74.0817,
+    latitude: Double = 5.53945,
+    longitude: Double = -72.92444,
     zoomLevel: Double = 12.0
 ) {
     AndroidView(
