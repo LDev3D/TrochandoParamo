@@ -20,4 +20,6 @@
     <dimen name="add_new_place_btn_to_bottom">100.dp</dimen>
     <dimen name="list_item_width">100.dp</dimen>
     <dimen name="place_image_medium_size">300.dp</dimen>
+    <dimen name="place_image_full_screen_x">480.dp</dimen>
+    <dimen name="place_image_full_screen_y">300.dp</dimen>
 </resources>
