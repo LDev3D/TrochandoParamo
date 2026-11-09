@@ -8,7 +8,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+<<<<<<< HEAD
 import androidx.compose.foundation.layout.Row
+=======
+>>>>>>> branch 'DevelopmentBranch' of https://github.com/LDev3D/TrochandoParamo.git
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -60,6 +63,7 @@ class PlaceScreen {
 
 @Composable
 fun PlaceDisplayScreen(
+<<<<<<< HEAD
     placeToDisplay: PuntoInteres = DataSetParamo().puntos[25],
     viewModel: PlaceDisplayViewModel = viewModel() ,
     modifier: Modifier = Modifier){
@@ -93,6 +97,28 @@ fun PlaceDisplayScreen(
                 }
                 Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
                 BigStarsRating(placeToDisplay.ratingStars)
+=======
+    placeToDisplay: PuntoInteres = DataSetParamo().puntos[24],
+    viewModel: PlaceDisplayViewModel = viewModel() ,
+    modifier: Modifier = Modifier){
+    val uiState by viewModel.UiStatePlace.collectAsState()
+    val scrollState = rememberScrollState()
+    Box() {
+        Surface(modifier = Modifier.fillMaxSize()) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = modifier
+                    .verticalScroll(scrollState)
+                    .background(color = MaterialTheme.colorScheme.background)
+            ) {
+                TittleText(placeToDisplay.name)
+                PlaceCarousel(onImgClicked = {
+                    viewModel.setCurrentImage(it)
+                    viewModel.setFullScreen(true)
+                },
+                    imgs = placeToDisplay.imgs)
+                PlaceDescDisplay(placeToDisplay.description)
+>>>>>>> branch 'DevelopmentBranch' of https://github.com/LDev3D/TrochandoParamo.git
             }
         }
         if(uiState.isOnFullScreenImage){
@@ -106,6 +132,7 @@ fun PlaceDisplayScreen(
 }
 
 @Composable
+<<<<<<< HEAD
 fun BigStarsRating(
     rating: Int,
     modifier: Modifier = Modifier
@@ -158,6 +185,8 @@ fun ZoneCatText(
 }
 
 @Composable
+=======
+>>>>>>> branch 'DevelopmentBranch' of https://github.com/LDev3D/TrochandoParamo.git
 fun PlaceDescDisplay(
     @StringRes
     desc: Int,
