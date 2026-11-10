@@ -5,7 +5,9 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -63,7 +65,7 @@ class PlaceScreen {
 @Composable
 fun PlaceDisplayScreen(
     windowSize: WindowWidthSizeClass,
-    placeToDisplay: PuntoInteres = DataSetParamo().puntos[25],
+    placeToDisplay: PuntoInteres = DataSetParamo().puntos[0],
     viewModel: PlaceDisplayViewModel = viewModel() ,
     modifier: Modifier = Modifier){
     val uiState by viewModel.UiStatePlace.collectAsState()
@@ -113,12 +115,21 @@ fun BigStarsRating(
     rating: Int,
     modifier: Modifier = Modifier
 ){
-    Row(modifier = modifier) {
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        modifier = modifier.padding(
+            bottom = dimensionResource(R.dimen.medium_padding)
+        )
+    ) {
         repeat(5) { index ->
             val isFilled = rating > index
             Image(
                 painter = if (isFilled) painterResource(R.drawable.baseline_star_24) else painterResource(R.drawable.baseline_star_border_24),
-                contentDescription = "Rating ${index + 1}"
+                contentDescription = "Rating ${index + 1}",
+                modifier.size(
+                    height = 60.dp,
+                    width = 60.dp
+                )
             )
         }
     }
@@ -187,6 +198,7 @@ fun TittleText(
         text = stringResource(name),
         fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
         fontSize = 40.sp,
+        lineHeight = 45.sp,
         textAlign = TextAlign.Center,
         modifier = modifier
             .padding(dimensionResource(R.dimen.medium_padding))
@@ -200,22 +212,10 @@ fun PlaceCarousel(
     @DrawableRes
     imgs: List<Int>,
     modifier: Modifier = Modifier
-){
-    HorizontalMultiBrowseCarousel(
-        state = rememberCarouselState { imgs.count() },
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(
-                top = dimensionResource(R.dimen.medium_padding),
-                bottom = dimensionResource(R.dimen.medium_padding)
-            ),
-        preferredItemWidth = 350.dp,
-        itemSpacing = dimensionResource(R.dimen.small_padding)
-    ) { i ->
-        val item = imgs[i]
+) {
+    if(imgs.size == 1){
         TextButton(
-            onClick = {onImgClicked(item)},
+            onClick = { onImgClicked(imgs[0]) },
             colors = ButtonColors(
                 contentColor = colorResource(R.color.transparent),
                 containerColor = colorResource(R.color.transparent),
@@ -228,13 +228,58 @@ fun PlaceCarousel(
             )
         ) {
             Image(
-                painter = painterResource(item),
-                contentDescription = null,
-                modifier = modifier.size(
-                    height = 400.dp,
-                    width = 380.dp
-                )
+                painter = painterResource(imgs[0]),
+                contentDescription = null
             )
+        }
+    }else{
+        BoxWithConstraints(
+            modifier = modifier.fillMaxWidth()
+        ) {
+            val screenWidth = maxWidth
+            val imageWidth = painterResource(imgs[0]).intrinsicSize.width.dp
+
+            val horizontalPadding = if (imgs.size == 1 && screenWidth > imageWidth) {
+                (screenWidth -painterResource(imgs[0]).intrinsicSize.width.dp / 2) /2
+            } else {
+                0.dp
+            }
+
+            HorizontalMultiBrowseCarousel(
+                state = rememberCarouselState { imgs.count() },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+                    .padding(
+                        top = dimensionResource(R.dimen.medium_padding),
+                        bottom = dimensionResource(R.dimen.medium_padding),
+                        start = dimensionResource(R.dimen.big_padding),
+                        end = dimensionResource(R.dimen.big_padding)
+                    ),
+                preferredItemWidth = 350.dp,
+                itemSpacing = dimensionResource(R.dimen.small_padding),
+                contentPadding = PaddingValues(horizontal = horizontalPadding)
+            ) { i ->
+                val item = imgs[i]
+                TextButton(
+                    onClick = { onImgClicked(item) },
+                    colors = ButtonColors(
+                        contentColor = colorResource(R.color.transparent),
+                        containerColor = colorResource(R.color.transparent),
+                        disabledContentColor = colorResource(R.color.transparent),
+                        disabledContainerColor = colorResource(R.color.transparent)
+                    ),
+                    modifier = Modifier.size(
+                        height = 180.dp,
+                        width = 600.dp
+                    )
+                ) {
+                    Image(
+                        painter = painterResource(item),
+                        contentDescription = null
+                    )
+                }
+            }
         }
     }
 }
@@ -245,10 +290,22 @@ fun PlaceImage(@DrawableRes img: Int, onClick: () -> Unit, modifier: Modifier = 
         color = colorResource(R.color.transparentBackground),
         modifier = modifier.fillMaxSize()
     ) {
-        Column() {
+        TextButton(
+            onClick = onClick,
+            shape = RectangleShape,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Image(
+                painter = painterResource(img),
+                contentDescription = stringResource(R.string.imagen_de_punto_de_inter_s),
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+        /*Column() {
             Button(
                 onClick = onClick,
-                Modifier.weight(0.5f)
+                Modifier
+                    .weight(0.5f)
                     .fillMaxSize()
                     .alpha(0f)
             ) {
@@ -261,27 +318,36 @@ fun PlaceImage(@DrawableRes img: Int, onClick: () -> Unit, modifier: Modifier = 
                 }
             Image(
                 painter = painterResource(img),
-                contentDescription = "Imagen de prirepipipi",
-                modifier = modifier.size(
-                    height = dimensionResource(R.dimen.place_image_full_screen_y),
-                    width = dimensionResource(R.dimen.place_image_full_screen_x)
-                )
+                contentDescription = stringResource(R.string.imagen_de_punto_de_inter_s),
+                modifier = modifier
+                    .size(
+                        height = dimensionResource(R.dimen.place_image_full_screen_y),
+                        width = dimensionResource(R.dimen.place_image_full_screen_x)
+                    )
                     .weight(weight)
             )
             Button(
                 onClick = onClick,
-                Modifier.weight(0.5f)
+                Modifier
+                    .weight(0.5f)
                     .fillMaxSize()
                     .alpha(0f)
             ) {
             }
-        }
+        }*/
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, widthDp = 1000)
 @Composable
 fun PlaceDisplayScreenPre(){
+    TrochandoParamoTheme() {
+        PlaceDisplayScreen(windowSize = WindowWidthSizeClass.Expanded)
+    }
+}
+@Preview(showBackground = true, widthDp = 400)
+@Composable
+fun PlaceDisplayScreenPreCompact(){
     TrochandoParamoTheme() {
         PlaceDisplayScreen(windowSize = WindowWidthSizeClass.Compact)
     }

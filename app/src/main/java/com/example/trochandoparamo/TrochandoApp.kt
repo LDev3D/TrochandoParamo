@@ -405,13 +405,13 @@ fun filtersListPre(){
     }
 }*/
 
-@Preview(showBackground = true)
+/*@Preview(showBackground = true)
 @Composable
 fun FilterButtonPre(){
     TrochandoParamoTheme(darkTheme = true) {
         FilterButton(onClick = {}, filterItem = DataSetParamo().catFilters[1])
     }
-}
+}*/
 
 /*@Preview(showBackground = true)
 @Composable
@@ -440,3 +440,19 @@ fun AppBarPre(){
     }
 }
 */
+
+@Preview(showBackground = true)
+@Composable
+fun TrochandoPre(){
+    TrochandoParamoTheme(darkTheme = true ) {
+        Scaffold(
+            topBar = {
+                TrochandoAppBar(canNavigateBack = true, navigateUp = {})
+            }
+        ) {it ->
+            TrochandoHome(onNewPlacePressed = {}, onSpecificFilterSelected = {}, onFilterKindSelected = {},  modifier = Modifier
+                .fillMaxSize()
+                .padding(it))
+        }
+    }
+}
