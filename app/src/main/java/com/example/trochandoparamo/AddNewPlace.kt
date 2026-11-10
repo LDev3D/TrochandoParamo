@@ -38,6 +38,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldLabelPosition
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -72,6 +74,7 @@ class AddNewPlace {
 
 @Composable
 fun AddNewPlaceScreen(
+    windowSize: WindowWidthSizeClass,
     newPointModel: NewPointUiModel = NewPointUiModel(),
     saveNewPlace: () -> Unit,
     onCatSelected: (cat: CatEnum) -> Unit,
@@ -468,7 +471,7 @@ fun AddPlaceName(
 @Composable
 fun AddNewPlacePre(){
     TrochandoParamoTheme(darkTheme = true) {
-        AddNewPlaceScreen( saveNewPlace = {}, onCatSelected = {}, onImgClicked = {}, onZoneSelected = {})
+        AddNewPlaceScreen(windowSize = WindowWidthSizeClass.Compact, saveNewPlace = {}, onCatSelected = {}, onImgClicked = {}, onZoneSelected = {})
     }
 }
 

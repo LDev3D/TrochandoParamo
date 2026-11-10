@@ -23,9 +23,13 @@ import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 import java.io.File
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 
 class MainActivity : ComponentActivity() {
 
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -44,7 +48,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             TrochandoParamoTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    TrochandoAppScreen()
+                    val windowSize = calculateWindowSizeClass(this)
+                    TrochandoAppScreen(windowSize = windowSize.widthSizeClass)
                 }
             }
         }
