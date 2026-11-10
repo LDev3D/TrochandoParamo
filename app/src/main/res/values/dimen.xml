@@ -17,7 +17,7 @@
     <dimen name="new_place_desc_textfield_x">300.dp</dimen>
     <dimen name="new_place_desc_textfield_y">200.dp</dimen>
     <dimen name="new_place_text_input_label_size">10.sp</dimen>
-    <dimen name="add_new_place_btn_to_bottom">100.dp</dimen>
+    <dimen name="add_new_place_btn_to_bottom">80.dp</dimen>
     <dimen name="list_item_width">100.dp</dimen>
     <dimen name="place_image_medium_size">300.dp</dimen>
     <dimen name="place_image_full_screen_x">480.dp</dimen>

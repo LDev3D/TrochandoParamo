@@ -45,7 +45,6 @@ class MainActivity : ComponentActivity() {
             TrochandoParamoTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     TrochandoAppScreen()
-                    //AddNewPlaceScreen(onCatSelected = {}, onZoneSelected = {}, saveNewPlace = {}, onImgClicked = {})
                 }
             }
         }
