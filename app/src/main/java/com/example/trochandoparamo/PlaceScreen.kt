@@ -89,7 +89,7 @@ fun PlaceDisplayScreen(
                         width = dimensionResource(R.dimen.dropdown_menu_x)
                     )
                 ) {
-                    OsmMapView()
+                    OsmMapView(latitude = placeToDisplay.latitud, longitude = placeToDisplay.longitud)
                 }
                 Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
                 BigStarsRating(placeToDisplay.ratingStars)

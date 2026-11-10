@@ -86,7 +86,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.acampada_apartamento_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 6.085309982299805,
+            longitud = -72.94218063354492
         ),
         PuntoInteres(
             categoria = CatEnum.ACAMPADA,
@@ -97,7 +99,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.acampada_chiticuy_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.901803970336914,
+            longitud = -73.02131652832031
         ),
         PuntoInteres(
             categoria = CatEnum.ACAMPADA,
@@ -108,7 +112,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.acampada_encantadas_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.92138946056366,
+            longitud = -73.02180469036102
         ),
         PuntoInteres(
             categoria = CatEnum.ACAMPADA,
@@ -119,7 +125,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.acampada_guinas_ubi,
             zona = ZoneEnum.GUINAS,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 6.107368469238281,
+            longitud = -72.90149688720703
         ),
         PuntoInteres(
             categoria = CatEnum.ACAMPADA,
@@ -130,7 +138,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.acampada_siete_cuerros_ubi,
             zona = ZoneEnum.EL_ALTO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 5.943517684936523,
+            longitud = -72.99556732177734
         ),
         PuntoInteres(
             categoria = CatEnum.BOSQUE,
@@ -139,9 +149,11 @@ data class DataSetParamo (
             imgs = mutableListOf(
                 R.drawable.bosquechiticuy
             ),
-            ubi = R.string.acampada_chiticuy_ubi,
+            ubi = R.string.bosque_chiticuy_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 5.91041,
+            longitud =  -73.02559
         ),
         PuntoInteres(
             categoria = CatEnum.BOSQUE,
@@ -152,7 +164,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.acampada_guinas_ubi,
             zona = ZoneEnum.GUINAS,
-            ratingStars = 3
+            ratingStars = 3,
+            latitud = 6.107368469238281,
+            longitud = -72.90149688720703
         ),
         PuntoInteres(
             categoria = CatEnum.BOSQUE,
@@ -161,9 +175,11 @@ data class DataSetParamo (
             imgs = mutableListOf(
                 R.drawable.bosquepandeazucar
             ),
-            ubi = R.string.acampada_apartamento_ubi,
+            ubi = R.string.bosque_pan_de_azucar_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.910558700561523,
+            longitud = -73.05135726928711
         ),
         PuntoInteres(
             categoria = CatEnum.BOSQUE,
@@ -174,7 +190,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.acampada_siete_cuerros_ubi,
             zona = ZoneEnum.EL_ALTO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 5.943517684936523,
+            longitud = -72.99556732177734
         ),
         PuntoInteres(
             categoria = CatEnum.CASCADA,
@@ -185,7 +203,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.cascada_chiticuy_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.910558700561523,
+            longitud = -73.02595138549805
         ),
         PuntoInteres(
             categoria = CatEnum.CASCADA,
@@ -196,7 +216,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.cascada_km_catorce_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 5.9017181396484375,
+            longitud = -73.06268692016602
         ),
         PuntoInteres(
             categoria = CatEnum.CASCADA,
@@ -207,7 +229,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.cascada_los_principes_ubi,
             zona = ZoneEnum.LA_RUSIA,
-            ratingStars = 3
+            ratingStars = 3,
+            latitud = 5.963347256183624,
+            longitud = -73.0871433019638
         ),
         PuntoInteres(
             categoria = CatEnum.CASCADA,
@@ -218,7 +242,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.cascada_pan_de_azucar_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 5.911915898323059,
+            longitud = -73.05105686187744
         ),
         PuntoInteres(
             categoria = CatEnum.CASCADA,
@@ -229,7 +255,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.cascada_zarza_ubi,
             zona = ZoneEnum.ZARZA,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.854248404502869,
+            longitud = -73.09855878353119
         ),
         PuntoInteres(
             categoria = CatEnum.CERRO,
@@ -240,7 +268,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.filo_cazadero_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 6.084332317113876,
+            longitud = -72.94305771589279
         ),
         PuntoInteres(
             categoria = CatEnum.CERRO,
@@ -251,7 +281,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.filo_cerinza_ubi,
             zona = ZoneEnum.EL_ALTO,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.942165851593018,
+            longitud = -72.9896691441536
         ),
         PuntoInteres(
             categoria = CatEnum.CERRO,
@@ -262,7 +294,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.filo_el_alto_ubi,
             zona = ZoneEnum.EL_ALTO,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.93917652964592,
+            longitud = -72.99243986606598
         ),
         PuntoInteres(
             categoria = CatEnum.CERRO,
@@ -273,7 +307,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.filo_fin_del_mundo_ubi,
             zona = ZoneEnum.GUINAS,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 6.108305901288986,
+            longitud = -72.90613979101181
         ),
         PuntoInteres(
             categoria = CatEnum.CERRO,
@@ -284,7 +320,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.filo_grande_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 6.044305711984634,
+            longitud = -72.9588907957077
         ),
         PuntoInteres(
             categoria = CatEnum.CERRO,
@@ -295,7 +333,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.filo_lajas_ubi,
             zona = ZoneEnum.LA_RUSIA,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 5.931072235107422,
+            longitud = -73.06262254714966
         ),
         PuntoInteres(
             categoria = CatEnum.CERRO,
@@ -306,7 +346,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.filo_pan_de_azucar_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 5.936082601547241,
+            longitud = -73.02876234054565
         ),
         PuntoInteres(
             categoria = CatEnum.CERRO,
@@ -317,7 +359,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.filo_pikacho_consuelo_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 6.09816312789917,
+            longitud = -72.92364120483398
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -328,7 +372,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_cazadero_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 6.08642578125,
+            longitud = -72.94048547744751
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -339,7 +385,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_chica_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.916933,
+            longitud = -73.037195
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -350,7 +398,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_de_los_patos_ubi,
             zona = ZoneEnum.EL_ALTO,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.9458136558532715,
+            longitud = -73.00170421600342
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -361,7 +411,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_el_alto_ubi,
             zona = ZoneEnum.EL_ALTO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 5.940181016921997,
+            longitud = -72.9914903640747
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -372,7 +424,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_el_filo_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 3
+            ratingStars = 3,
+            latitud = 5.933777242898941,
+            longitud = -73.03011149168015
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -383,7 +437,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_el_pozito_ubi,
             zona = ZoneEnum.EL_ALTO,
-            ratingStars = 3
+            ratingStars = 3,
+            latitud = 5.943531095981598,
+            longitud = -73.00059378147125
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -394,7 +450,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_el_venado_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.923360884189606,
+            longitud = -73.020721077919
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -405,7 +463,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_encantada_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.913360267877579,
+            longitud = -73.0288615822792
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -416,7 +476,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_esmeralda_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 6.080082356929779,
+            longitud = -72.93822437524796
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -431,7 +493,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_gacha_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 3
+            ratingStars = 3,
+            latitud = 5.9120553731918335,
+            longitud = -73.02944630384445
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -442,7 +506,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_grande_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 6.050942838191986,
+            longitud = -72.97322452068329
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -453,7 +519,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_hoyo_azul_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 6.097082197666168,
+            longitud = -72.91889101266861
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -464,7 +532,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_la_estrella_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 6.040165722370148,
+            longitud = -72.95394480228424
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -475,7 +545,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_las_lajas_ubi,
             zona = ZoneEnum.LA_RUSIA,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.931192934513092,
+            longitud = -73.06033462285995
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -486,7 +558,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_de_los_patos_pan_de_azucar_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.924055576324463,
+            longitud = -73.02052795886993
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -495,9 +569,11 @@ data class DataSetParamo (
             imgs = mutableListOf(
                 R.drawable.lagunalosprincipes
             ),
-            ubi = R.string.laguna_los_patos_principes_ubi,
+            ubi = R.string.laguna_de_los_principes_ubi,
             zona = ZoneEnum.LA_RUSIA,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.9623883664608,
+            longitud = -73.08558493852615
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -508,7 +584,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_los_patos_principes_ubi,
             zona = ZoneEnum.LA_RUSIA,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.959110707044601,
+            longitud = -73.08483392000198
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -519,7 +597,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_negra_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 6.081860661506653,
+            longitud = -72.94952988624573
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -530,7 +610,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_negra_güinas_ubi,
             zona = ZoneEnum.GUINAS,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 6.109388172626495,
+            longitud = -72.90836334228516
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -542,7 +624,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_de_pan_de_azucar_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.923332720994949,
+            longitud = -73.03225189447403
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -553,7 +637,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_de_las_tres_cruces_ubi,
             zona = ZoneEnum.EL_ALTO,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.935666859149933,
+            longitud = -73.00655633211136
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -564,7 +650,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_seca_ubi,
             zona = ZoneEnum.EL_ALTO,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.941359847784042,
+            longitud = -72.99905687570572
         ),
         PuntoInteres(
             categoria = CatEnum.LAGUNA,
@@ -575,7 +663,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.laguna_seca_guinas_ubi,
             zona = ZoneEnum.GUINAS,
-            ratingStars = 3
+            ratingStars = 3,
+            latitud = 6.105666607618332,
+            longitud = -72.9011133313179
         ),
         PuntoInteres(
             categoria = CatEnum.RIACHUELO,
@@ -586,7 +676,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.rio_chiticuy_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.903110206127167,
+            longitud = -73.02075058221817
         ),
         PuntoInteres(
             categoria = CatEnum.RIACHUELO,
@@ -597,7 +689,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.rio_salguera_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 3
+            ratingStars = 3,
+            latitud = 6.060971617698669,
+            longitud = -72.9290297627449
         ),
         PuntoInteres(
             categoria = CatEnum.RIACHUELO,
@@ -608,7 +702,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.rio_surba_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.908555090427399,
+            longitud = -73.05761218070984
         ),
         PuntoInteres(
             categoria = CatEnum.SENDERO,
@@ -619,7 +715,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.sendero_consuelo_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 6.0533058643341064,
+            longitud = -72.89422273635864
         ),
         PuntoInteres(
             categoria = CatEnum.SENDERO,
@@ -630,7 +728,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.sendero_grande_ubi,
             zona = ZoneEnum.CONSUELO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 6.034832149744034,
+            longitud = -72.95688986778259
         ),
         PuntoInteres(
             categoria = CatEnum.SENDERO,
@@ -641,7 +741,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.sendero_guinas_ubi,
             zona = ZoneEnum.GUINAS,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 6.099388897418976,
+            longitud = -72.88088947534561
         ),
         PuntoInteres(
             categoria = CatEnum.SENDERO,
@@ -652,7 +754,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.sendero_km_catorce_ubi,
             zona = ZoneEnum.PAN_DE_AZUCAR,
-            ratingStars = 4
+            ratingStars = 4,
+            latitud = 5.902666300535202,
+            longitud = -73.06144505739212
         ),
         PuntoInteres(
             categoria = CatEnum.SENDERO,
@@ -663,7 +767,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.sendero_lajas_ubi,
             zona = ZoneEnum.LA_RUSIA,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 5.911583304405212,
+            longitud = -73.08177083730698
         ),
         PuntoInteres(
             categoria = CatEnum.SENDERO,
@@ -674,7 +780,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.sendero_principes_ubi,
             zona = ZoneEnum.LA_RUSIA,
-            ratingStars = 3
+            ratingStars = 3,
+            latitud = 5.944748818874359,
+            longitud = -73.07925224304199
         ),
         PuntoInteres(
             categoria = CatEnum.SENDERO,
@@ -685,7 +793,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.sendero_siete_cueros_ubi,
             zona = ZoneEnum.EL_ALTO,
-            ratingStars = 5
+            ratingStars = 5,
+            latitud = 5.95241591334343,
+            longitud = -72.98155814409256
         ),
         PuntoInteres(
             categoria = CatEnum.SENDERO,
@@ -696,7 +806,9 @@ data class DataSetParamo (
             ),
             ubi = R.string.sendero_zarza_ubi,
             zona = ZoneEnum.EL_ALTO,
-            ratingStars = 3
+            ratingStars = 3,
+            latitud = 5.84011048078537,
+            longitud = -73.08636277914047
         ),
     )
 )
