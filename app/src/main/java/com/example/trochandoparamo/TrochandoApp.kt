@@ -50,6 +50,8 @@ import com.example.trochandoparamo.model.ViewModelParamo
 import com.example.trochandoparamo.ui.theme.TrochandoParamoTheme
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
@@ -106,6 +108,7 @@ fun TrochandoAppBar(canNavigateBack: Boolean, navigateUp: () -> Unit,modifier: M
 
 @Composable
 fun TrochandoAppScreen(
+    windowSize: WindowWidthSizeClass,
     viewModel: ViewModelParamo = viewModel(),
     navHostController: NavHostController = rememberNavController(),
     modifier: Modifier = Modifier){
@@ -154,7 +157,7 @@ fun TrochandoAppScreen(
             composable(
                 route = DestinationsEnum.FILTERED.name
             ){
-                FilteredList(points = viewModel.getFilteredList(), onPointClick = {
+                FilteredList(windowSize = windowSize ,points = viewModel.getFilteredList(), onPointClick = {
                     viewModel.setCurrentPlace(it)
                     navHostController.navigate(DestinationsEnum.DETAILS.name)
                 })
@@ -162,12 +165,13 @@ fun TrochandoAppScreen(
             composable(
                 route = DestinationsEnum.DETAILS.name
             ){
-                PlaceDisplayScreen(placeToDisplay = uiState.currentInterestPoint)
+                PlaceDisplayScreen(windowSize = windowSize ,placeToDisplay = uiState.currentInterestPoint)
             }
             composable (
                 route = DestinationsEnum.NEW.name
             ){
                 AddNewPlaceScreen(
+                    windowSize = windowSize,
                     saveNewPlace = {},
                     onImgClicked = {},
                     onZoneSelected = {},

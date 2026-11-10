@@ -29,6 +29,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.carousel.HorizontalMultiBrowseCarousel
 import androidx.compose.material3.carousel.rememberCarouselState
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -60,6 +62,7 @@ class PlaceScreen {
 
 @Composable
 fun PlaceDisplayScreen(
+    windowSize: WindowWidthSizeClass,
     placeToDisplay: PuntoInteres = DataSetParamo().puntos[25],
     viewModel: PlaceDisplayViewModel = viewModel() ,
     modifier: Modifier = Modifier){
@@ -280,6 +283,6 @@ fun PlaceImage(@DrawableRes img: Int, onClick: () -> Unit, modifier: Modifier = 
 @Composable
 fun PlaceDisplayScreenPre(){
     TrochandoParamoTheme() {
-        PlaceDisplayScreen()
+        PlaceDisplayScreen(windowSize = WindowWidthSizeClass.Compact)
     }
 }

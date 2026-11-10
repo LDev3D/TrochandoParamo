@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -27,6 +28,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -54,6 +57,7 @@ class FilteredScreen {
 
 @Composable
 fun FilteredList(
+    windowSize: WindowWidthSizeClass,
     points: List<PuntoInteres>,
     onPointClick: (PuntoInteres) -> Unit,
     modifier: Modifier = Modifier
@@ -62,7 +66,9 @@ fun FilteredList(
         modifier = modifier.fillMaxSize()
     ) {
         LazyColumn(
-            state = rememberLazyListState()
+            state = rememberLazyListState(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
         ) {
             items(points){ point ->
                 ListElement(interestPoint = point, onClick = onPointClick)
@@ -80,9 +86,10 @@ fun ListElement(
         onClick = {onClick(interestPoint)} ,
         shape = RectangleShape,
         border = null,
-        modifier = Modifier.size(
+        modifier = modifier.fillMaxWidth().size(
             height = 250.dp,
             width = 600.dp)
+
     ) {
         Card(
             modifier = modifier.fillMaxSize()
@@ -186,7 +193,7 @@ fun ListItemImg(
     )
 }
 
-@Preview(showBackground = true)
+/*@Preview(showBackground = true)
 @Composable
 fun ListElementPre(){
     TrochandoParamoTheme() {
@@ -198,6 +205,13 @@ fun ListElementPre(){
 @Composable
 fun FilteredListPre(){
     TrochandoParamoTheme() {
-        FilteredList(DataSetParamo().puntos, {})
+        FilteredList(windowSize = WindowWidthSizeClass.Compact,DataSetParamo().puntos, {})
+    }
+}*/
+@Preview(showBackground = true, widthDp = 1000)
+@Composable
+fun FilteredListPre(){
+    TrochandoParamoTheme() {
+        FilteredList(windowSize = WindowWidthSizeClass.Compact,DataSetParamo().puntos, {})
     }
 }
