@@ -65,7 +65,11 @@ import com.example.trochandoparamo.data.ZoneEnum
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TrochandoAppBar(canNavigateBack: Boolean, navigateUp: () -> Unit,modifier: Modifier = Modifier){
+fun TrochandoAppBar(
+    windowSize: WindowWidthSizeClass,
+    canNavigateBack: Boolean,
+    navigateUp: () -> Unit,
+    modifier: Modifier = Modifier){
     TopAppBar(
         modifier = modifier,
         title = {
@@ -73,7 +77,7 @@ fun TrochandoAppBar(canNavigateBack: Boolean, navigateUp: () -> Unit,modifier: M
             ) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceEvenly,
-                    modifier = modifier
+                    modifier = modifier.fillMaxWidth()
                 ) {
                     Text(
                         text = stringResource(R.string.app_name),
@@ -121,6 +125,7 @@ fun TrochandoAppScreen(
     Scaffold(
         topBar = {
             TrochandoAppBar(
+                windowSize = windowSize,
                 canNavigateBack = currentScreen.name != DestinationsEnum.HOME.name,
                 navigateUp = {
                     navHostController.navigateUp()
@@ -138,6 +143,7 @@ fun TrochandoAppScreen(
                 route = DestinationsEnum.HOME.name
             ){
                 TrochandoHome(
+                    windowSize = windowSize,
                     viewModel = viewModel,
                     onFilterKindSelected = {
                         viewModel.SetCurrentFilterList(it)
@@ -151,6 +157,14 @@ fun TrochandoAppScreen(
                     },
                     onNewPlacePressed = {
                         navHostController.navigate(DestinationsEnum.NEW.name)
+                    },
+                    modifier = if(windowSize == WindowWidthSizeClass.Expanded){
+                        Modifier.padding(
+                            start = dimensionResource(R.dimen.medium_padding),
+                            top = dimensionResource(R.dimen.big_padding)
+                        )
+                    }else{
+                        Modifier
                     }
                 )
             }
@@ -200,6 +214,7 @@ fun GetZoneOrCatToPerformSearch(filterItem: FilterItem): Pair<CatEnum, ZoneEnum>
 
 @Composable
 fun TrochandoHome(
+    windowSize: WindowWidthSizeClass,
     viewModel: ViewModelParamo = viewModel(),
     onNewPlacePressed: () -> Unit,
     onFilterKindSelected: (filter: FilterEnum) -> Unit,
@@ -215,7 +230,11 @@ fun TrochandoHome(
             text = stringResource(DestinationsEnum.HOME.screenTittle),
             textAlign = TextAlign.Start,
             fontFamily = MaterialTheme.typography.labelSmall.fontFamily,
-            fontSize = 20.sp,
+            fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+                40.sp
+            }else{
+                20.sp
+            },
             modifier = modifier
                 .fillMaxWidth()
                 .padding(
@@ -224,6 +243,7 @@ fun TrochandoHome(
                 )
         )
         MinimalDropdownMenu(
+            windowSize = windowSize,
             modifier = Modifier.padding(
                 //top = dimensionResource(R.dimen.medium_padding)
             ),
@@ -237,7 +257,11 @@ fun TrochandoHome(
         Text(
             text = stringResource(R.string.quieres_a_adir_un_nuevo_lugar),
             textAlign = TextAlign.Start,
-            fontSize = 20.sp,
+            fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+                40.sp
+            }else{
+                20.sp
+            },
             fontFamily = MaterialTheme.typography.labelSmall.fontFamily,
             modifier = modifier
                 .fillMaxWidth()
@@ -258,16 +282,41 @@ fun TrochandoHome(
         ) {
             Button(
                 onClick = onNewPlacePressed,
-                shape = MaterialTheme.shapes.medium
+                shape = MaterialTheme.shapes.medium,
+                modifier = if(windowSize == WindowWidthSizeClass.Expanded){
+                    Modifier.size(
+                        height = 100.dp,
+                        width = 300.dp
+                    )
+                }else{
+                    Modifier
+                }
             ) {
                 Icon(
-                    painterResource(R.drawable.baseline_add_location_alt_24_dark),
-                    contentDescription = stringResource(R.string.a_adir_un_nuevo_lugar),
+                    painter = painterResource(R.drawable.baseline_add_location_alt_24_dark),
+                    contentDescription = "More options",
+                    modifier = if(windowSize == WindowWidthSizeClass.Expanded){
+                        Modifier.padding(
+                            start = dimensionResource(R.dimen.small_padding),
+                            end = 2.dp
+                        ).size(
+                            50.dp
+                        )
+                    }else{
+                        Modifier.padding(
+                            start = dimensionResource(R.dimen.small_padding),
+                            end = 2.dp
+                        )
+                    }
                 )
                 Text(
                     text = stringResource(R.string.a_adir_un_nuevo_lugar),
                     fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
-
+                    fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+                        25.sp
+                    }else{
+                        15.sp
+                    }
                 )
             }
         }
@@ -276,6 +325,7 @@ fun TrochandoHome(
 
 @Composable
 fun MinimalDropdownMenu(
+    windowSize: WindowWidthSizeClass,
     onDropDownPressed: () -> List<FilterEnum>,
     onFilterSelected: (filter: FilterEnum) -> Unit,
     modifier: Modifier = Modifier
@@ -294,7 +344,15 @@ fun MinimalDropdownMenu(
     ) {
         Button(
             shape = MaterialTheme.shapes.medium,
-            onClick = { expanded = !expanded }
+            onClick = { expanded = !expanded },
+            modifier = if(windowSize == WindowWidthSizeClass.Expanded){
+                Modifier.size(
+                    height = 100.dp,
+                    width = 300.dp
+                )
+            }else{
+                Modifier
+            }
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically
@@ -302,13 +360,29 @@ fun MinimalDropdownMenu(
                 Icon(
                     painter = painterResource(R.drawable.baseline_explore_24_light),
                     contentDescription = "More options",
-                    modifier = Modifier.padding(
-                        start = dimensionResource(R.dimen.small_padding),
-                        end = 2.dp
-                    ))
+                    modifier = if(windowSize == WindowWidthSizeClass.Expanded){
+                        Modifier.padding(
+                            start = dimensionResource(R.dimen.small_padding),
+                            end = 2.dp
+                        ).size(
+                            50.dp
+                        )
+                    }else{
+                        Modifier.padding(
+                            start = dimensionResource(R.dimen.small_padding),
+                            end = 2.dp
+                        )
+                    }
+                )
+                }
                 Text(
                     text = stringResource(R.string.quiero_buscar_lugares_por),
-                    fontFamily = MaterialTheme.typography.labelMedium.fontFamily
+                    fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
+                    fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+                        25.sp
+                    }else{
+                        15.sp
+                    }
                 )
             }
         }
@@ -334,7 +408,6 @@ fun MinimalDropdownMenu(
             }
         }
     }
-}
 
 @Composable
 fun FiltersList(
@@ -441,16 +514,16 @@ fun AppBarPre(){
 }
 */
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, widthDp = 1500)
 @Composable
 fun TrochandoPre(){
     TrochandoParamoTheme(darkTheme = true ) {
         Scaffold(
             topBar = {
-                TrochandoAppBar(canNavigateBack = true, navigateUp = {})
+                TrochandoAppBar(windowSize = WindowWidthSizeClass.Expanded,canNavigateBack = true, navigateUp = {})
             }
         ) {it ->
-            TrochandoHome(onNewPlacePressed = {}, onSpecificFilterSelected = {}, onFilterKindSelected = {},  modifier = Modifier
+            TrochandoHome(windowSize = WindowWidthSizeClass.Expanded,onNewPlacePressed = {}, onSpecificFilterSelected = {}, onFilterKindSelected = {},  modifier = Modifier
                 .fillMaxSize()
                 .padding(it))
         }
