@@ -54,9 +54,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.trochandoparamo.data.CatEnum
+import com.example.trochandoparamo.data.DataSetParamo
 import com.example.trochandoparamo.data.ZoneEnum
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -209,6 +211,7 @@ fun TrochandoHome(
             text = stringResource(DestinationsEnum.HOME.screenTittle),
             textAlign = TextAlign.Start,
             fontFamily = MaterialTheme.typography.labelSmall.fontFamily,
+            fontSize = 20.sp,
             modifier = modifier
                 .fillMaxWidth()
                 .padding(
@@ -230,6 +233,7 @@ fun TrochandoHome(
         Text(
             text = stringResource(R.string.quieres_a_adir_un_nuevo_lugar),
             textAlign = TextAlign.Start,
+            fontSize = 20.sp,
             fontFamily = MaterialTheme.typography.labelSmall.fontFamily,
             modifier = modifier
                 .fillMaxWidth()
@@ -353,7 +357,7 @@ fun FilterButton(
 ){
     Button(
         modifier = modifier.padding(dimensionResource(R.dimen.small_padding)),
-        shape = MaterialTheme.shapes.large,
+        shape = MaterialTheme.shapes.small,
         elevation = ButtonDefaults.buttonElevation(
             defaultElevation = 8.dp,
             pressedElevation = 4.dp,
@@ -361,7 +365,13 @@ fun FilterButton(
         ),
         onClick = onClick) {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(
+                top = dimensionResource(R.dimen.medium_padding),
+                bottom = dimensionResource(R.dimen.medium_padding),
+                start = dimensionResource(R.dimen.medium_padding),
+                end = dimensionResource(R.dimen.medium_padding)
+            )
         ) {
             Image(
                 painter = painterResource(filterItem.img),
@@ -373,7 +383,11 @@ fun FilterButton(
                 )
             Text(
                 text = stringResource(filterItem.name),
-                fontFamily = MaterialTheme.typography.labelMedium.fontFamily
+                fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
+                fontSize = 30.sp,
+                modifier = modifier.padding(
+                    top = dimensionResource(R.dimen.medium_padding)
+                )
             )
         }
     }
@@ -387,15 +401,15 @@ fun filtersListPre(){
     }
 }*/
 
-/*@Preview(showBackground = true)
+@Preview(showBackground = true)
 @Composable
 fun FilterButtonPre(){
     TrochandoParamoTheme(darkTheme = true) {
-        FilterButton(onClick = {}, DataSetParamo().catFilters[1])
+        FilterButton(onClick = {}, filterItem = DataSetParamo().catFilters[1])
     }
-}*/
+}
 
-@Preview(showBackground = true)
+/*@Preview(showBackground = true)
 @Composable
 fun TrochandoPre(){
     TrochandoParamoTheme(darkTheme = true ) {
@@ -421,3 +435,4 @@ fun AppBarPre(){
         )
     }
 }
+*/

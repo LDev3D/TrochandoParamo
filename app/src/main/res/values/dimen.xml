@@ -7,7 +7,7 @@
     <dimen name="small_padding">8.dp</dimen>
     <dimen name="dropdown_menu_x">300.dp</dimen>
     <dimen name="dropdown_menu_y">50.dp</dimen>
-    <dimen name="filter_image">150.dp</dimen>
+    <dimen name="filter_image">200.dp</dimen>
     <dimen name="list_item_image">150.dp</dimen>
     <dimen name="button_elevation">8.dp</dimen>
     <dimen name="button_elevation_focused">6.dp</dimen>
