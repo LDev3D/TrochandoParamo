@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -36,6 +37,7 @@ import androidx.compose.material3.MenuItemColors
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldLabelPosition
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
@@ -50,6 +52,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -92,13 +96,14 @@ fun AddNewPlaceScreen(
             .background(color = MaterialTheme.colorScheme.background)
     ) {
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.medium_padding)))
-        DataInputTextLabel(R.string.selecciona_una_imagen)
+        DataInputTextLabel(windowSize = windowSize,R.string.selecciona_una_imagen)
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.medium_padding)))
-        ImgButton(onImgClicked)
+        ImgButton(windowSize= windowSize ,onImgClicked)
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.medium_padding)))
 
-        DataInputTextLabel(R.string.nombre_del_punto_de_inter_s_label)
+        DataInputTextLabel(windowSize = windowSize,R.string.nombre_del_punto_de_inter_s_label)
         AddPlaceName(
+            windowSize = windowSize,
             label = stringResource(R.string.nombre_del_punto_de_inter_s),
             lineLimits = TextFieldLineLimits.SingleLine,
             height = R.dimen.new_place_name_textfield_y,
@@ -106,8 +111,9 @@ fun AddNewPlaceScreen(
         )
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.medium_padding)))
 
-        DataInputTextLabel(R.string.descripci_n_del_punto_de_inter_s)
+        DataInputTextLabel(windowSize = windowSize,R.string.descripci_n_del_punto_de_inter_s)
         AddPlaceName(
+            windowSize = windowSize,
             label = stringResource(R.string.descripci_n_del_lugar),
             lineLimits = TextFieldLineLimits.MultiLine(),
             height = R.dimen.new_place_desc_textfield_y,
@@ -116,13 +122,18 @@ fun AddNewPlaceScreen(
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.medium_padding)))
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceEvenly
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = if(windowSize == WindowWidthSizeClass.Expanded){
+                modifier.fillMaxWidth()
+            }else{
+                modifier
+            }
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.weight(1f)
             ) {
-                DataInputTextLabel(R.string.qu_tipo_de_lugar_es, align = TextAlign.Center)
+                DataInputTextLabel(windowSize = windowSize,R.string.qu_tipo_de_lugar_es, align = TextAlign.Center)
                 CatDropdownMenu(
                     newPointUiModel = newPointModel,
                     icon = R.drawable.baseline_filter_vintage_24_light,
@@ -130,28 +141,28 @@ fun AddNewPlaceScreen(
                     onDropDownPressed = {
                         CatEnum.entries
                     },
-                    onFilterSelected = onCatSelected
+                    onFilterSelected = onCatSelected,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.weight(1f)
             ) {
-                DataInputTextLabel(R.string.en_qu_p_ramo_se_encuentra, align = TextAlign.Center)
+                DataInputTextLabel(windowSize = windowSize,R.string.en_qu_p_ramo_se_encuentra, align = TextAlign.Center)
                 ZoneDropdownMenu(
-                    newPointModel,
+                    newPointUiModel = newPointModel,
                     icon = R.drawable.baseline_public_24_light,
                     buttonDescription = R.string.seleccionar_p_ramo,
                     onDropDownPressed = {
                         ZoneEnum.entries
                     },
-                    onFilterSelected = {
-                        onZoneSelected
-                    }
+                    onFilterSelected = onZoneSelected,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
         }
-        DataInputTextLabel(R.string.ubicaci_n_del_punto_de_inter_s)
+        DataInputTextLabel(windowSize = windowSize,R.string.ubicaci_n_del_punto_de_inter_s)
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.medium_padding)))
         Surface(
             Modifier.size(
@@ -162,14 +173,22 @@ fun AddNewPlaceScreen(
             OsmMapView()
         }
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.medium_padding)))
-        StarRating(newPointUiModel = newPointModel, {})
+        StarRating( windowSize = windowSize,newPointUiModel = newPointModel, {})
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.medium_padding)))
-        SaveCancelButtons(saveNewPlace)
+        SaveCancelButtons(
+            saveNewPlace,
+            modifier = if(windowSize == WindowWidthSizeClass.Expanded){
+                Modifier.fillMaxWidth().weight(1f)
+            }else{
+                Modifier
+            }
+        )
     }
 }
 
 @Composable
 fun StarRating(
+    windowSize: WindowWidthSizeClass,
     newPointUiModel: NewPointUiModel,
     onRatingChanged: () -> Unit,
     modifier: Modifier = Modifier
@@ -187,7 +206,15 @@ fun StarRating(
             ) {
                 Image(
                     painter = if (isFilled) painterResource(R.drawable.baseline_star_24) else painterResource(R.drawable.baseline_star_border_24),
-                    contentDescription = "Rating ${index + 1}"
+                    contentDescription = "Rating ${index + 1}",
+                    modifier = if(windowSize == WindowWidthSizeClass.Expanded){
+                        modifier.size(
+                            height = 80.dp,
+                            width = 80.dp
+                        )
+                    }else{
+                        modifier
+                    }
                 )
             }
         }
@@ -198,19 +225,22 @@ fun StarRating(
 @Composable
 fun SaveCancelButtons(saveNewPlace: () -> Unit, modifier: Modifier = Modifier){
     Row(
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
-        Button(onClick = saveNewPlace, modifier = Modifier.padding(
+        Button(onClick = saveNewPlace, modifier = modifier.padding(
             start = dimensionResource(R.dimen.medium_padding),
             end = dimensionResource(R.dimen.medium_padding),
             bottom = dimensionResource(R.dimen.medium_padding)
-        )) {
+        )
+
+        ) {
             Text(
                 text = stringResource(R.string.guardar),
                 fontFamily = MaterialTheme.typography.labelMedium.fontFamily
             )
         }
-        Button(onClick = {  }, modifier = Modifier.padding(
+        Button(onClick = {  }, modifier = modifier.padding(
             start = dimensionResource(R.dimen.medium_padding),
             end = dimensionResource(R.dimen.medium_padding),
             bottom = dimensionResource(R.dimen.medium_padding)
@@ -246,7 +276,7 @@ fun ZoneDropdownMenu(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
-        modifier = Modifier
+        modifier = modifier
             .padding(
                 top = dimensionResource(R.dimen.medium_padding),
                 start = dimensionResource(R.dimen.medium_padding)
@@ -255,12 +285,11 @@ fun ZoneDropdownMenu(
                 color = MaterialTheme.colorScheme.onSecondary
             )
             .clip(shape = MaterialTheme.shapes.small)
-            .fillMaxWidth()
     ) {
         IconButton(
             shape = MaterialTheme.shapes.medium,
             onClick = { expanded = !expanded },
-            modifier = Modifier
+            modifier = modifier
                 .size(
                     width = dimensionResource(R.dimen.dropdown_menu_x),
                     height = dimensionResource(R.dimen.dropdown_menu_y)
@@ -331,7 +360,7 @@ fun CatDropdownMenu(
     var expanded by remember { mutableStateOf(false) }
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
+        modifier = modifier
             .padding(
                 top = dimensionResource(R.dimen.medium_padding),
                 start = dimensionResource(R.dimen.medium_padding)
@@ -344,7 +373,7 @@ fun CatDropdownMenu(
         IconButton(
             shape = MaterialTheme.shapes.medium,
             onClick = { expanded = !expanded },
-            modifier = Modifier.size(
+            modifier = modifier.size(
                 width = dimensionResource(R.dimen.dropdown_menu_x),
                 height = dimensionResource(R.dimen.dropdown_menu_y)
             )
@@ -398,11 +427,21 @@ fun CatDropdownMenu(
 }
 
 @Composable
-fun DataInputTextLabel(@StringRes text: Int, align: TextAlign = TextAlign.Start, modifier: Modifier = Modifier){
+fun DataInputTextLabel(
+    windowSize: WindowWidthSizeClass,
+    @StringRes text: Int,
+    align: TextAlign = TextAlign.Start,
+    modifier: Modifier = Modifier){
     Text(
         text = stringResource(text),
         fontFamily = MaterialTheme.typography.labelSmall.fontFamily,
         color = MaterialTheme.colorScheme.primary,
+        lineHeight = 30.sp,
+        fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+            35.sp
+        }else{
+            20.sp
+        },
         textAlign = align,
         modifier = Modifier
             .padding(
@@ -417,22 +456,35 @@ fun DataInputTextLabel(@StringRes text: Int, align: TextAlign = TextAlign.Start,
 
 @Composable
 fun ImgButton(
+    windowSize: WindowWidthSizeClass,
     onImgClicked: () -> Unit,
     modifier: Modifier = Modifier){
-    Button(onImgClicked) {
+    TextButton(
+        onClick = onImgClicked,
+        shape = MaterialTheme.shapes.small,
+        modifier = Modifier.padding(dimensionResource(R.dimen.medium_padding))
+    ) {
         Image(
             painter = painterResource(R.drawable.img_placeholder),
             contentDescription = stringResource(R.string.add_image_for_new_place_button),
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.None,
             modifier = modifier
-                .clip(MaterialTheme.shapes.medium)
-                .size(dimensionResource(R.dimen.filter_image))
+                .fillMaxWidth()
+                .aspectRatio(4f)
+                .scale(
+                    if (windowSize == WindowWidthSizeClass.Expanded) {
+                        4.5f
+                    } else {
+                        2.6f
+                    }
+                )
         )
     }
 }
 
 @Composable
 fun AddPlaceName(
+    windowSize: WindowWidthSizeClass,
     label: String,
     lineLimits: TextFieldLineLimits,
     @DimenRes height: Int,
@@ -445,7 +497,11 @@ fun AddPlaceName(
             Text(
                 text = label,
                 fontFamily = MaterialTheme.typography.labelSmall.fontFamily,
-                fontSize = 10.sp
+                fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+                    20.sp
+                }else{
+                    10.sp
+                }
             )
         },
         keyboardOptions = KeyboardOptions.Default.copy(
@@ -455,30 +511,43 @@ fun AddPlaceName(
         labelPosition = TextFieldLabelPosition.Attached(),
         textStyle = MaterialTheme.typography.labelMedium,
         lineLimits = lineLimits,
-        modifier = modifier
-            .padding(
-                start = dimensionResource(R.dimen.medium_padding),
-                end = dimensionResource(R.dimen.medium_padding)
-            )
-            .size(
-                width = dimensionResource(width),
-                height = dimensionResource(height)
-            )
+        modifier = if(windowSize == WindowWidthSizeClass.Expanded){
+            modifier
+                .padding(
+                    start = dimensionResource(R.dimen.medium_padding),
+                    end = dimensionResource(R.dimen.medium_padding)
+                )
+                .fillMaxWidth()
+                .size(
+                    width = dimensionResource(width),
+                    height = dimensionResource(height)
+                )
+        }else{
+            modifier
+                .padding(
+                    start = dimensionResource(R.dimen.medium_padding),
+                    end = dimensionResource(R.dimen.medium_padding)
+                )
+                .size(
+                    width = dimensionResource(width),
+                    height = dimensionResource(height)
+                )
+        }
     )
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, widthDp = 1000)
 @Composable
 fun AddNewPlacePre(){
     TrochandoParamoTheme(darkTheme = true) {
-        AddNewPlaceScreen(windowSize = WindowWidthSizeClass.Compact, saveNewPlace = {}, onCatSelected = {}, onImgClicked = {}, onZoneSelected = {})
+        AddNewPlaceScreen(windowSize = WindowWidthSizeClass.Expanded, saveNewPlace = {}, onCatSelected = {}, onImgClicked = {}, onZoneSelected = {})
     }
 }
 
-@Preview(showBackground = true)
+/*@Preview(showBackground = true)
 @Composable
 fun StarRatingPre(){
     TrochandoParamoTheme() {
         StarRating(newPointUiModel = NewPointUiModel(), {})
     }
-}
+}*/
