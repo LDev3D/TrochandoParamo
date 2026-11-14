@@ -12,16 +12,21 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ShapeDefaults
@@ -65,47 +70,161 @@ class PlaceScreen {
 @Composable
 fun PlaceDisplayScreen(
     windowSize: WindowWidthSizeClass,
-    placeToDisplay: PuntoInteres = DataSetParamo().puntos[0],
+    placeToDisplay: PuntoInteres = DataSetParamo().puntos[31],
     viewModel: PlaceDisplayViewModel = viewModel() ,
     modifier: Modifier = Modifier){
     val uiState by viewModel.UiStatePlace.collectAsState()
     val scrollState = rememberScrollState()
-    Box() {
-        Surface(modifier = Modifier.fillMaxSize()) {
+    if(windowSize == WindowWidthSizeClass.Expanded){
+        Box(
+            modifier = modifier
+        ) {
             Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = modifier
-                    .verticalScroll(scrollState)
-                    .background(color = MaterialTheme.colorScheme.background)
+                    .verticalScroll(
+                        state = rememberScrollState()
+                    )
             ) {
-                TittleText(placeToDisplay.name)
-                PlaceCarousel(onImgClicked = {
-                    viewModel.setCurrentImage(it)
-                    viewModel.setFullScreen(true)
-                },
-                    imgs = placeToDisplay.imgs)
-                PlaceDescDisplay(placeToDisplay.description)
-                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
+                ExpandedPlaceImg(
+                    imgs = placeToDisplay.imgs,
+                    onImgClicked = {
+                        viewModel.setCurrentImage(it)
+                        viewModel.setFullScreen(true)
+                    },
+                    modifier = modifier.weight(1f)
+                )
+                TittleText(
+                    name = placeToDisplay.name,
+                    modifier = modifier.weight(2f)
+                )
+                PlaceDescDisplay(placeToDisplay.description, modifier = modifier.weight(2f))
+                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)).weight(2f))
                 ZoneCatText(zone = placeToDisplay.zona.zoneName, cat = placeToDisplay.categoria.nameOfCat)
-                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
-                Surface(
+                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)).weight(2f))
+                /*Surface(
                     Modifier.size(
                         height = dimensionResource(R.dimen.dropdown_menu_x),
                         width = dimensionResource(R.dimen.dropdown_menu_x)
                     )
+                    .weight(2f)
                 ) {
                     OsmMapView(latitude = placeToDisplay.latitud, longitude = placeToDisplay.longitud)
+                }*/
+                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)).weight(2f))
+                BigStarsRating(placeToDisplay.ratingStars, modifier = modifier.weight(2f))
+
+                if(uiState.isOnFullScreenImage){
+                    PlaceImage(
+                        img = uiState.currentImageToDisplayOnFullScreen,
+                        onClick = {
+                            viewModel.setFullScreen(false)
+                        })
                 }
-                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
-                BigStarsRating(placeToDisplay.ratingStars)
             }
         }
-        if(uiState.isOnFullScreenImage){
-            PlaceImage(
-                img = uiState.currentImageToDisplayOnFullScreen,
-                onClick = {
-                    viewModel.setFullScreen(false)
-                })
+    }else{
+        Box() {
+            Surface(modifier = Modifier.fillMaxSize()) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = modifier
+                        .verticalScroll(scrollState)
+                        .background(color = MaterialTheme.colorScheme.background)
+                ) {
+                    TittleText(placeToDisplay.name)
+                    PlaceCarousel(onImgClicked = {
+                        viewModel.setCurrentImage(it)
+                        viewModel.setFullScreen(true)
+                    },
+                        imgs = placeToDisplay.imgs)
+                    PlaceDescDisplay(placeToDisplay.description)
+                    Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
+                    ZoneCatText(zone = placeToDisplay.zona.zoneName, cat = placeToDisplay.categoria.nameOfCat)
+                    Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
+                    /*Surface(
+                        Modifier.size(
+                            height = dimensionResource(R.dimen.dropdown_menu_x),
+                            width = dimensionResource(R.dimen.dropdown_menu_x)
+                        )
+                    ) {
+                        OsmMapView(latitude = placeToDisplay.latitud, longitude = placeToDisplay.longitud)
+                    }*/
+                    Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
+                    BigStarsRating(placeToDisplay.ratingStars)
+                }
+            }
+            if(uiState.isOnFullScreenImage){
+                PlaceImage(
+                    img = uiState.currentImageToDisplayOnFullScreen,
+                    onClick = {
+                        viewModel.setFullScreen(false)
+                    })
+            }
+        }
+    }
+}
+
+@Composable
+fun ExpandedPlaceImg(
+    @DrawableRes
+    imgs: List<Int>,
+    onImgClicked: (Int) -> Unit,
+    modifier: Modifier = Modifier
+){
+    if(imgs.size > 1){
+        LazyRow(
+            state = rememberLazyListState()
+        ) {
+            items(imgs){ img ->
+                TextButton(
+                    onClick = {onImgClicked(img)},
+                    shape = RectangleShape,
+                    modifier = modifier.size(
+                        height = dimensionResource(R.dimen.filter_image),
+                        width = dimensionResource(R.dimen.filter_image)
+                    )
+                        .padding(
+                            start = dimensionResource(R.dimen.very_small_padding),
+                            end = dimensionResource(R.dimen.very_small_padding)
+                        )
+                ) {
+                    Image(
+                        painter = painterResource(img),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = modifier.scale(3f)
+                    )
+                }
+            }
+        }
+    }
+    else{
+        TextButton(
+            onClick = {onImgClicked(imgs[0])},
+            shape = MaterialTheme.shapes.large
+        ) {
+            Image(
+                painter = painterResource(imgs[0]),
+                contentDescription = null,
+                contentScale = ContentScale.FillBounds,
+                modifier = if(painterResource(imgs[0]).intrinsicSize.width < painterResource(imgs[0]).intrinsicSize.height){
+                    modifier.fillMaxSize()
+                        .clip(shape = MaterialTheme.shapes.large)
+                        .aspectRatio(3f)
+                        .scale(
+                            scaleX = 1f,
+                            scaleY = 4f
+                        )
+                }else{
+                    modifier.fillMaxSize()
+                        .clip(shape = MaterialTheme.shapes.large)
+                        .aspectRatio(3f)
+                        .scale(
+                            scaleX = 1f,
+                            scaleY = 2f
+                        )
+                }
+            )
         }
     }
 }
@@ -342,7 +461,7 @@ fun PlaceImage(@DrawableRes img: Int, onClick: () -> Unit, modifier: Modifier = 
 @Composable
 fun PlaceDisplayScreenPre(){
     TrochandoParamoTheme() {
-        PlaceDisplayScreen(windowSize = WindowWidthSizeClass.Expanded)
+        PlaceDisplayScreen(windowSize = WindowWidthSizeClass.Expanded, modifier = Modifier.fillMaxSize())
     }
 }
 @Preview(showBackground = true, widthDp = 400)
