@@ -111,14 +111,14 @@ fun PlaceDisplayScreen(
 
                 Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
 
-                /*Surface(
+                Surface(
                     Modifier.size(
                         height = dimensionResource(R.dimen.dropdown_menu_x),
                         width = dimensionResource(R.dimen.dropdown_menu_x)
                     )
                 ) {
                     OsmMapView(latitude = placeToDisplay.latitud, longitude = placeToDisplay.longitud)
-                }*/
+                }
                 Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
                 BigStarsRating(placeToDisplay.ratingStars)
             }

@@ -69,7 +69,7 @@ fun FilteredList(
         LazyColumn(
             state = rememberLazyListState(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surface)
+            modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary)
         ) {
             items(points){ point ->
                 ListElement(interestPoint = point, onClick = onPointClick)
