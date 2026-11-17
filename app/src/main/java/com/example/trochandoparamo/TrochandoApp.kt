@@ -62,6 +62,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.trochandoparamo.data.CatEnum
 import com.example.trochandoparamo.data.DataSetParamo
 import com.example.trochandoparamo.data.ZoneEnum
+import com.example.trochandoparamo.model.PlaceDisplayViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -171,15 +172,28 @@ fun TrochandoAppScreen(
             composable(
                 route = DestinationsEnum.FILTERED.name
             ){
-                FilteredList(windowSize = windowSize ,points = viewModel.getFilteredList(), onPointClick = {
-                    viewModel.setCurrentPlace(it)
-                    navHostController.navigate(DestinationsEnum.DETAILS.name)
-                })
+                if(windowSize == WindowWidthSizeClass.Expanded){
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        FilteredList(windowSize = windowSize ,points = viewModel.getFilteredList(), onPointClick = {
+                            viewModel.setCurrentPlace(it)
+                            navHostController.navigate(DestinationsEnum.FILTERED.name)
+                        },
+                            modifier = Modifier.weight(1f))
+                        PlaceDisplayScreen(windowSize = windowSize ,placeToDisplay = uiState.currentInterestPoint, modifier = Modifier.weight(1f).fillMaxSize())
+                    }
+                }else{
+                    FilteredList(windowSize = windowSize ,points = viewModel.getFilteredList(), onPointClick = {
+                        viewModel.setCurrentPlace(it)
+                        navHostController.navigate(DestinationsEnum.DETAILS.name)
+                    })
+                }
             }
             composable(
                 route = DestinationsEnum.DETAILS.name
             ){
-                PlaceDisplayScreen(windowSize = windowSize ,placeToDisplay = uiState.currentInterestPoint)
+                PlaceDisplayScreen(windowSize = windowSize ,placeToDisplay = uiState.currentInterestPoint, modifier = Modifier.fillMaxSize())
             }
             composable (
                 route = DestinationsEnum.NEW.name

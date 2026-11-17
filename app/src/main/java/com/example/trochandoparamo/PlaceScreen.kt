@@ -70,7 +70,7 @@ class PlaceScreen {
 @Composable
 fun PlaceDisplayScreen(
     windowSize: WindowWidthSizeClass,
-    placeToDisplay: PuntoInteres = DataSetParamo().puntos[31],
+    placeToDisplay: PuntoInteres = DataSetParamo().puntos[0],
     viewModel: PlaceDisplayViewModel = viewModel() ,
     modifier: Modifier = Modifier){
     val uiState by viewModel.UiStatePlace.collectAsState()
@@ -80,46 +80,52 @@ fun PlaceDisplayScreen(
             modifier = modifier
         ) {
             Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = modifier
-                    .verticalScroll(
-                        state = rememberScrollState()
-                    )
+                    .verticalScroll(scrollState)
             ) {
                 ExpandedPlaceImg(
                     imgs = placeToDisplay.imgs,
                     onImgClicked = {
                         viewModel.setCurrentImage(it)
                         viewModel.setFullScreen(true)
-                    },
-                    modifier = modifier.weight(1f)
+                    }
                 )
+
+                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
+
                 TittleText(
-                    name = placeToDisplay.name,
-                    modifier = modifier.weight(2f)
+                    windowSize = windowSize,
+                    name = placeToDisplay.name
                 )
-                PlaceDescDisplay(placeToDisplay.description, modifier = modifier.weight(2f))
-                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)).weight(2f))
-                ZoneCatText(zone = placeToDisplay.zona.zoneName, cat = placeToDisplay.categoria.nameOfCat)
-                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)).weight(2f))
-                /*Surface(
+
+                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
+
+                PlaceDescDisplay(windowSize = windowSize,placeToDisplay.description)
+
+                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
+
+                ZoneCatText(windowSize = windowSize,zone = placeToDisplay.zona.zoneName, cat = placeToDisplay.categoria.nameOfCat)
+
+                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
+
+                Surface(
                     Modifier.size(
                         height = dimensionResource(R.dimen.dropdown_menu_x),
                         width = dimensionResource(R.dimen.dropdown_menu_x)
                     )
-                    .weight(2f)
                 ) {
                     OsmMapView(latitude = placeToDisplay.latitud, longitude = placeToDisplay.longitud)
-                }*/
-                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)).weight(2f))
-                BigStarsRating(placeToDisplay.ratingStars, modifier = modifier.weight(2f))
-
-                if(uiState.isOnFullScreenImage){
-                    PlaceImage(
-                        img = uiState.currentImageToDisplayOnFullScreen,
-                        onClick = {
-                            viewModel.setFullScreen(false)
-                        })
                 }
+                Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
+                BigStarsRating(placeToDisplay.ratingStars)
+            }
+            if(uiState.isOnFullScreenImage){
+                PlaceImage(
+                    img = uiState.currentImageToDisplayOnFullScreen,
+                    onClick = {
+                        viewModel.setFullScreen(false)
+                    })
             }
         }
     }else{
@@ -131,24 +137,24 @@ fun PlaceDisplayScreen(
                         .verticalScroll(scrollState)
                         .background(color = MaterialTheme.colorScheme.background)
                 ) {
-                    TittleText(placeToDisplay.name)
+                    TittleText(windowSize = windowSize,placeToDisplay.name)
                     PlaceCarousel(onImgClicked = {
                         viewModel.setCurrentImage(it)
                         viewModel.setFullScreen(true)
                     },
                         imgs = placeToDisplay.imgs)
-                    PlaceDescDisplay(placeToDisplay.description)
+                    PlaceDescDisplay(windowSize = windowSize,placeToDisplay.description)
                     Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
-                    ZoneCatText(zone = placeToDisplay.zona.zoneName, cat = placeToDisplay.categoria.nameOfCat)
+                    ZoneCatText(windowSize = windowSize,zone = placeToDisplay.zona.zoneName, cat = placeToDisplay.categoria.nameOfCat)
                     Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
-                    /*Surface(
+                    Surface(
                         Modifier.size(
                             height = dimensionResource(R.dimen.dropdown_menu_x),
                             width = dimensionResource(R.dimen.dropdown_menu_x)
                         )
                     ) {
                         OsmMapView(latitude = placeToDisplay.latitud, longitude = placeToDisplay.longitud)
-                    }*/
+                    }
                     Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
                     BigStarsRating(placeToDisplay.ratingStars)
                 }
@@ -246,8 +252,8 @@ fun BigStarsRating(
                 painter = if (isFilled) painterResource(R.drawable.baseline_star_24) else painterResource(R.drawable.baseline_star_border_24),
                 contentDescription = "Rating ${index + 1}",
                 modifier.size(
-                    height = 60.dp,
-                    width = 60.dp
+                    height = 50.dp,
+                    width = 50.dp
                 )
             )
         }
@@ -256,23 +262,22 @@ fun BigStarsRating(
 
 @Composable
 fun ZoneCatText(
+    windowSize: WindowWidthSizeClass,
     zone: String,
     cat: String,
     modifier: Modifier = Modifier
 ){
-    Row() {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Row() {
             Text(
-                text = zone,
-                fontSize = 20.sp,
-                modifier = modifier.padding(
-                    start = dimensionResource(R.dimen.small_padding),
-                    end = dimensionResource(R.dimen.small_padding)
-                )
-            )
-            Text(
                 text = "Categoría:",
-                fontSize = 20.sp,
+                fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+                    40.sp
+                }else{
+                    20.sp
+                },
                 modifier = modifier.padding(
                     start = dimensionResource(R.dimen.small_padding),
                 )
@@ -280,18 +285,36 @@ fun ZoneCatText(
             Text(
                 text = cat,
                 textAlign = TextAlign.Start,
-                fontSize = 20.sp,
+                fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+                    40.sp
+                }else{
+                    20.sp
+                },
                 modifier = modifier.padding(
                     start = dimensionResource(R.dimen.small_padding),
                     end = dimensionResource(R.dimen.small_padding)
                 )
             )
         }
+        Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
+        Text(
+            text = zone,
+            fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+                40.sp
+            }else{
+                20.sp
+            },
+            modifier = modifier.padding(
+                start = dimensionResource(R.dimen.small_padding),
+                end = dimensionResource(R.dimen.small_padding)
+            )
+        )
     }
 }
 
 @Composable
 fun PlaceDescDisplay(
+    windowSize: WindowWidthSizeClass,
     @StringRes
     desc: Int,
     modifier: Modifier = Modifier
@@ -299,6 +322,16 @@ fun PlaceDescDisplay(
     Text(
         text = stringResource(desc),
         fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
+        fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+            30.sp
+        }else{
+            20.sp
+        },
+        lineHeight = if(windowSize == WindowWidthSizeClass.Expanded){
+            30.sp
+        }else{
+            20.sp
+        },
         textAlign = TextAlign.Justify,
         modifier = modifier.padding(
             start = dimensionResource(R.dimen.medium_padding),
@@ -309,6 +342,7 @@ fun PlaceDescDisplay(
 
 @Composable
 fun TittleText(
+    windowSize: WindowWidthSizeClass,
     @StringRes
     name: Int,
     modifier: Modifier = Modifier
@@ -316,8 +350,16 @@ fun TittleText(
     Text(
         text = stringResource(name),
         fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
-        fontSize = 40.sp,
-        lineHeight = 45.sp,
+        fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+            60.sp
+        }else{
+            40.sp
+        },
+        lineHeight = if(windowSize == WindowWidthSizeClass.Expanded){
+            65.sp
+        }else{
+            45.sp
+        },
         textAlign = TextAlign.Center,
         modifier = modifier
             .padding(dimensionResource(R.dimen.medium_padding))
