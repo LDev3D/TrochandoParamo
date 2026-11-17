@@ -325,8 +325,9 @@ fun ZoneDropdownMenu(
                     },
                     fontSize = 15.sp,
                     fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
+                    lineHeight = 12.sp,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f).padding(dimensionResource(R.dimen.small_padding))
                 )
                 Icon(
                     painter = painterResource(icon),
@@ -413,9 +414,10 @@ fun CatDropdownMenu(
                         uiState.placeHolderCategory.nameOfCat
                     },
                     fontSize = 15.sp,
+                    lineHeight = 12.sp,
                     fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f).padding(dimensionResource(R.dimen.small_padding))
                 )
                 Icon(
                     painter = painterResource(icon),

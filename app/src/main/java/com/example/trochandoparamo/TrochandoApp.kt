@@ -471,8 +471,8 @@ fun FilterButton(
     modifier: Modifier = Modifier
 ){
     Button(
-        modifier = modifier.padding(dimensionResource(R.dimen.small_padding)),
-        shape = MaterialTheme.shapes.small,
+        modifier = modifier.padding(dimensionResource(R.dimen.small_padding)).size(dimensionResource(R.dimen.main_filter_btn)),
+        shape = MaterialTheme.shapes.extraLarge,
         elevation = ButtonDefaults.buttonElevation(
             defaultElevation = 8.dp,
             pressedElevation = 4.dp,
@@ -482,10 +482,10 @@ fun FilterButton(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(
-                top = dimensionResource(R.dimen.medium_padding),
-                bottom = dimensionResource(R.dimen.medium_padding),
-                start = dimensionResource(R.dimen.medium_padding),
-                end = dimensionResource(R.dimen.medium_padding)
+                top = dimensionResource(R.dimen.small_padding),
+                bottom = dimensionResource(R.dimen.small_padding),
+                start = dimensionResource(R.dimen.small_padding),
+                end = dimensionResource(R.dimen.small_padding)
             )
         ) {
             Image(
@@ -493,13 +493,14 @@ fun FilterButton(
                 contentDescription = stringResource(filterItem.name),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .size(dimensionResource(R.dimen.filter_image))
-                    .clip(shape = MaterialTheme.shapes.medium)
+                    .size(dimensionResource(R.dimen.main_filter_image))
+                    .clip(shape = MaterialTheme.shapes.extraLarge)
                 )
             Text(
                 text = stringResource(filterItem.name),
                 fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
-                fontSize = 30.sp,
+                textAlign = TextAlign.Center,
+                fontSize = 20.sp,
                 modifier = modifier.padding(
                     top = dimensionResource(R.dimen.medium_padding)
                 )
