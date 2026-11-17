@@ -5,6 +5,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -68,7 +69,7 @@ fun FilteredList(
         LazyColumn(
             state = rememberLazyListState(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surface)
         ) {
             items(points){ point ->
                 ListElement(interestPoint = point, onClick = onPointClick)
@@ -95,10 +96,13 @@ fun ListElement(
             modifier = modifier.fillMaxSize()
         ) {
             Row(
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.background(MaterialTheme.colorScheme.tertiary)
             ) {
                 ListItemImg(img = interestPoint.imgs[0], modifier = modifier.weight(0.6f))
-                Column(modifier = modifier.weight(1f)) {
+                Column(
+                    modifier = modifier.weight(1f)
+                ) {
                     ListItemTittle(name = interestPoint.name)
                     Spacer(modifier = Modifier.padding(start = dimensionResource(R.dimen.list_item_width), end = dimensionResource(R.dimen.list_item_width), bottom = dimensionResource(R.dimen.small_padding)))
                     Box() {
@@ -145,6 +149,7 @@ fun ListItemDesc(
         text = stringResource(desc),
         fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
         textAlign = TextAlign.Justify,
+        color = MaterialTheme.colorScheme.surface,
         overflow = TextOverflow.Ellipsis,
         lineHeight = 15.sp,
         modifier = modifier
@@ -166,6 +171,7 @@ fun ListItemTittle(
     Text(
         text = stringResource(name),
         fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
+        color = MaterialTheme.colorScheme.surface,
         fontSize = 30.sp,
         lineHeight = 28.sp,
         modifier = modifier.padding(

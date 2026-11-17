@@ -32,6 +32,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MenuItemColors
 import androidx.compose.material3.RadioButton
@@ -39,6 +40,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TextFieldLabelPosition
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
@@ -228,7 +231,15 @@ fun SaveCancelButtons(saveNewPlace: () -> Unit, modifier: Modifier = Modifier){
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
-        Button(onClick = saveNewPlace, modifier = modifier.padding(
+        Button(
+            colors = ButtonColors(
+                containerColor = MaterialTheme.colorScheme.tertiary,
+                contentColor = MaterialTheme.colorScheme.onPrimary,
+                disabledContainerColor = MaterialTheme.colorScheme.tertiary,
+                disabledContentColor = MaterialTheme.colorScheme.primary
+            ),
+            onClick = saveNewPlace,
+            modifier = modifier.padding(
             start = dimensionResource(R.dimen.medium_padding),
             end = dimensionResource(R.dimen.medium_padding),
             bottom = dimensionResource(R.dimen.medium_padding)
@@ -246,8 +257,8 @@ fun SaveCancelButtons(saveNewPlace: () -> Unit, modifier: Modifier = Modifier){
             bottom = dimensionResource(R.dimen.medium_padding)
         ),
             colors = ButtonColors(
-                containerColor = MaterialTheme.colorScheme.errorContainer,
-                contentColor = MaterialTheme.colorScheme.onSurface,
+                containerColor = MaterialTheme.colorScheme.error,
+                contentColor = MaterialTheme.colorScheme.surface,
                 disabledContentColor = MaterialTheme.colorScheme.errorContainer,
                 disabledContainerColor = MaterialTheme.colorScheme.onTertiary
             )
@@ -287,6 +298,12 @@ fun ZoneDropdownMenu(
             .clip(shape = MaterialTheme.shapes.small)
     ) {
         IconButton(
+            colors = IconButtonColors(
+                containerColor = MaterialTheme.colorScheme.secondary,
+                contentColor = MaterialTheme.colorScheme.onPrimary,
+                disabledContainerColor = MaterialTheme.colorScheme.tertiary,
+                disabledContentColor = MaterialTheme.colorScheme.primary
+            ),
             shape = MaterialTheme.shapes.medium,
             onClick = { expanded = !expanded },
             modifier = modifier
@@ -297,7 +314,8 @@ fun ZoneDropdownMenu(
                 .clip(shape = MaterialTheme.shapes.small)
         ) {
             Row(
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     text = if(uiState.placeHolderZone.name == ZoneEnum.DEFAULT.name){
@@ -315,31 +333,32 @@ fun ZoneDropdownMenu(
                     contentDescription = stringResource(buttonDescription),
                     modifier = Modifier.padding(
                         start = dimensionResource(R.dimen.small_padding),
-                        end = dimensionResource(R.dimen.small_padding)
+                        end = dimensionResource(R.dimen.big_padding)
                     ))
             }
-        }
-        DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false }
-        ) {
-            for (filter in onDropDownPressed()){
-                DropdownMenuItem(
-                    text = { Text(filter.zoneName) },
-                    onClick = {
-                        newPointUiModel.SetNewPointZone(filter)
-                        onFilterSelected(filter)
-                        expanded = !expanded
-                    },
-                    colors = MenuItemColors(
-                        textColor = MaterialTheme.colorScheme.primary,
-                        leadingIconColor = MaterialTheme.colorScheme.primary,
-                        trailingIconColor = MaterialTheme.colorScheme.onPrimary,
-                        disabledTextColor = MaterialTheme.colorScheme.tertiary,
-                        disabledLeadingIconColor = MaterialTheme.colorScheme.tertiary,
-                        disabledTrailingIconColor = MaterialTheme.colorScheme.tertiary
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                for (filter in onDropDownPressed()){
+                    DropdownMenuItem(
+                        text = { Text(filter.zoneName) },
+                        onClick = {
+                            newPointUiModel.SetNewPointZone(filter)
+                            onFilterSelected(filter)
+                            expanded = !expanded
+                        },
+                        colors = MenuItemColors(
+                            textColor = MaterialTheme.colorScheme.surface,
+                            leadingIconColor = MaterialTheme.colorScheme.secondary,
+                            trailingIconColor = MaterialTheme.colorScheme.secondary,
+                            disabledTextColor = MaterialTheme.colorScheme.secondary,
+                            disabledLeadingIconColor = MaterialTheme.colorScheme.secondary,
+                            disabledTrailingIconColor = MaterialTheme.colorScheme.secondary
+                        ),
+                        modifier = Modifier.background(MaterialTheme.colorScheme.tertiary)
                     )
-                )
+                }
             }
         }
     }
@@ -371,6 +390,12 @@ fun CatDropdownMenu(
             .clip(shape = MaterialTheme.shapes.small)
     ) {
         IconButton(
+            colors = IconButtonColors(
+                containerColor = MaterialTheme.colorScheme.secondary,
+                contentColor = MaterialTheme.colorScheme.onPrimary,
+                disabledContainerColor = MaterialTheme.colorScheme.tertiary,
+                disabledContentColor = MaterialTheme.colorScheme.primary
+            ),
             shape = MaterialTheme.shapes.medium,
             onClick = { expanded = !expanded },
             modifier = modifier.size(
@@ -397,32 +422,34 @@ fun CatDropdownMenu(
                     contentDescription = stringResource(buttonDescription),
                     modifier = Modifier.padding(
                         start = dimensionResource(R.dimen.small_padding),
-                        end = dimensionResource(R.dimen.small_padding)
+                        end = dimensionResource(R.dimen.big_padding)
                     ))
             }
-        }
-        DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false }
-        ) {
-            for (filter in onDropDownPressed()){
-                DropdownMenuItem(
-                    text = { Text(filter.nameOfCat) },
-                    onClick = {
-                        newPointUiModel.SetNewPointCategory(filter)
-                        onFilterSelected(filter)
-                        expanded = !expanded },
-                    colors = MenuItemColors(
-                        textColor = MaterialTheme.colorScheme.primary,
-                        leadingIconColor = MaterialTheme.colorScheme.primary,
-                        trailingIconColor = MaterialTheme.colorScheme.onPrimary,
-                        disabledTextColor = MaterialTheme.colorScheme.tertiary,
-                        disabledLeadingIconColor = MaterialTheme.colorScheme.tertiary,
-                        disabledTrailingIconColor = MaterialTheme.colorScheme.tertiary
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                for (filter in onDropDownPressed()){
+                    DropdownMenuItem(
+                        text = { Text(filter.nameOfCat) },
+                        onClick = {
+                            newPointUiModel.SetNewPointCategory(filter)
+                            onFilterSelected(filter)
+                            expanded = !expanded },
+                        colors = MenuItemColors(
+                            textColor = MaterialTheme.colorScheme.surface,
+                            leadingIconColor = MaterialTheme.colorScheme.secondary,
+                            trailingIconColor = MaterialTheme.colorScheme.secondary,
+                            disabledTextColor = MaterialTheme.colorScheme.secondary,
+                            disabledLeadingIconColor = MaterialTheme.colorScheme.secondary,
+                            disabledTrailingIconColor = MaterialTheme.colorScheme.secondary
+                        ),
+                        modifier = Modifier.background(MaterialTheme.colorScheme.tertiary)
                     )
-                )
+                }
             }
         }
+
     }
 }
 
@@ -492,6 +519,15 @@ fun AddPlaceName(
     modifier: Modifier = Modifier
 ){
     TextField(
+        colors = TextFieldDefaults.colors().copy(
+            focusedTextColor = MaterialTheme.colorScheme.onSurface,
+            unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+            cursorColor = MaterialTheme.colorScheme.inverseOnSurface,
+            focusedContainerColor = MaterialTheme.colorScheme.inverseSurface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedLabelColor = MaterialTheme.colorScheme.onSurface,
+            focusedLabelColor = MaterialTheme.colorScheme.surface
+        ),
         state = rememberTextFieldState(initialText = ""),
         label = {
             Text(
@@ -539,7 +575,7 @@ fun AddPlaceName(
 @Preview(showBackground = true, widthDp = 1000)
 @Composable
 fun AddNewPlacePre(){
-    TrochandoParamoTheme(darkTheme = true) {
+    TrochandoParamoTheme(darkTheme = false) {
         AddNewPlaceScreen(windowSize = WindowWidthSizeClass.Expanded, saveNewPlace = {}, onCatSelected = {}, onImgClicked = {}, onZoneSelected = {})
     }
 }

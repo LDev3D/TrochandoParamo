@@ -2,6 +2,7 @@ package com.example.trochandoparamo
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -49,7 +50,9 @@ import com.example.trochandoparamo.data.FilterItem
 import com.example.trochandoparamo.model.ViewModelParamo
 import com.example.trochandoparamo.ui.theme.TrochandoParamoTheme
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.collectAsState
@@ -73,8 +76,16 @@ fun TrochandoAppBar(
     modifier: Modifier = Modifier){
     TopAppBar(
         modifier = modifier,
+        colors = TopAppBarColors(
+            containerColor = MaterialTheme.colorScheme.secondary,
+            scrolledContainerColor = MaterialTheme.colorScheme.primary,
+            navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+            actionIconContentColor = MaterialTheme.colorScheme.secondary,
+            titleContentColor = MaterialTheme.colorScheme.secondary
+        ),
         title = {
             Surface(
+                color = MaterialTheme.colorScheme.secondary
             ) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceEvenly,
@@ -239,6 +250,7 @@ fun TrochandoHome(
         modifier = modifier.verticalScroll(
             state = rememberScrollState()
         )
+            .background(MaterialTheme.colorScheme.background)
     ) {
         Text(
             text = stringResource(DestinationsEnum.HOME.screenTittle),
@@ -295,6 +307,12 @@ fun TrochandoHome(
                 )
         ) {
             Button(
+                colors = ButtonColors(
+                    containerColor = MaterialTheme.colorScheme.tertiary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary,
+                    disabledContainerColor = MaterialTheme.colorScheme.tertiary,
+                    disabledContentColor = MaterialTheme.colorScheme.primary
+                ),
                 onClick = onNewPlacePressed,
                 shape = MaterialTheme.shapes.medium,
                 modifier = if(windowSize == WindowWidthSizeClass.Expanded){
@@ -357,6 +375,12 @@ fun MinimalDropdownMenu(
             .fillMaxWidth()
     ) {
         Button(
+            colors = ButtonColors(
+                containerColor = MaterialTheme.colorScheme.tertiary,
+                contentColor = MaterialTheme.colorScheme.onPrimary,
+                disabledContainerColor = MaterialTheme.colorScheme.tertiary,
+                disabledContentColor = MaterialTheme.colorScheme.primary
+            ),
             shape = MaterialTheme.shapes.medium,
             onClick = { expanded = !expanded },
             modifier = if(windowSize == WindowWidthSizeClass.Expanded){
@@ -399,7 +423,6 @@ fun MinimalDropdownMenu(
                     }
                 )
             }
-        }
         DropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false }
@@ -420,6 +443,7 @@ fun MinimalDropdownMenu(
                     )
                 )
             }
+        }
         }
     }
 
@@ -531,7 +555,7 @@ fun AppBarPre(){
 @Preview(showBackground = true, widthDp = 1500)
 @Composable
 fun TrochandoPre(){
-    TrochandoParamoTheme(darkTheme = true ) {
+    TrochandoParamoTheme(darkTheme = false ) {
         Scaffold(
             topBar = {
                 TrochandoAppBar(windowSize = WindowWidthSizeClass.Expanded,canNavigateBack = true, navigateUp = {})

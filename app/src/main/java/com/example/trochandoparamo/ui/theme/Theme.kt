@@ -9,6 +9,25 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import com.example.compose.backgroundDark
+import com.example.compose.backgroundLight
+import com.example.compose.onBackgroundDark
+import com.example.compose.onBackgroundLight
+import com.example.compose.onPrimaryDark
+import com.example.compose.onPrimaryLight
+import com.example.compose.onSecondaryDark
+import com.example.compose.onSecondaryLight
+import com.example.compose.onSurfaceDark
+import com.example.compose.onSurfaceLight
+import com.example.compose.onTertiaryDark
+import com.example.compose.onTertiaryLight
+import com.example.compose.primaryDark
+import com.example.compose.primaryLight
+import com.example.compose.secondaryDark
+import com.example.compose.secondaryLight
+import com.example.compose.surfaceDark
+import com.example.compose.surfaceLight
+import com.example.compose.tertiaryLight
 
 private val LightColorScheme = lightColorScheme(
     primary = primaryLight,
@@ -40,7 +59,7 @@ private val DarkColorScheme = darkColorScheme(
 fun TrochandoParamoTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

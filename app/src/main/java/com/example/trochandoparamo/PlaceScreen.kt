@@ -27,6 +27,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ShapeDefaults
@@ -83,6 +84,7 @@ fun PlaceDisplayScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = modifier
                     .verticalScroll(scrollState)
+                    .background(MaterialTheme.colorScheme.secondary)
             ) {
                 ExpandedPlaceImg(
                     imgs = placeToDisplay.imgs,
@@ -109,14 +111,14 @@ fun PlaceDisplayScreen(
 
                 Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
 
-                Surface(
+                /*Surface(
                     Modifier.size(
                         height = dimensionResource(R.dimen.dropdown_menu_x),
                         width = dimensionResource(R.dimen.dropdown_menu_x)
                     )
                 ) {
                     OsmMapView(latitude = placeToDisplay.latitud, longitude = placeToDisplay.longitud)
-                }
+                }*/
                 Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
                 BigStarsRating(placeToDisplay.ratingStars)
             }
@@ -135,7 +137,7 @@ fun PlaceDisplayScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = modifier
                         .verticalScroll(scrollState)
-                        .background(color = MaterialTheme.colorScheme.background)
+                        .background(MaterialTheme.colorScheme.secondary)
                 ) {
                     TittleText(windowSize = windowSize,placeToDisplay.name)
                     PlaceCarousel(onImgClicked = {
@@ -273,10 +275,12 @@ fun ZoneCatText(
         Row() {
             Text(
                 text = "Categoría:",
+                color = MaterialTheme.colorScheme.surface,
+                fontFamily = MaterialTheme.typography.labelSmall.fontFamily,
                 fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
                     40.sp
                 }else{
-                    20.sp
+                    25.sp
                 },
                 modifier = modifier.padding(
                     start = dimensionResource(R.dimen.small_padding),
@@ -284,11 +288,13 @@ fun ZoneCatText(
             )
             Text(
                 text = cat,
+                color = MaterialTheme.colorScheme.surface,
                 textAlign = TextAlign.Start,
+                fontFamily = MaterialTheme.typography.labelSmall.fontFamily,
                 fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
                     40.sp
                 }else{
-                    20.sp
+                    25.sp
                 },
                 modifier = modifier.padding(
                     start = dimensionResource(R.dimen.small_padding),
@@ -299,10 +305,12 @@ fun ZoneCatText(
         Spacer(Modifier.padding(dimensionResource(R.dimen.medium_padding)))
         Text(
             text = zone,
+            color = MaterialTheme.colorScheme.surface,
+            fontFamily = MaterialTheme.typography.labelSmall.fontFamily,
             fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
                 40.sp
             }else{
-                20.sp
+                25.sp
             },
             modifier = modifier.padding(
                 start = dimensionResource(R.dimen.small_padding),
@@ -319,25 +327,36 @@ fun PlaceDescDisplay(
     desc: Int,
     modifier: Modifier = Modifier
 ){
-    Text(
-        text = stringResource(desc),
-        fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
-        fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
-            30.sp
-        }else{
-            20.sp
-        },
-        lineHeight = if(windowSize == WindowWidthSizeClass.Expanded){
-            30.sp
-        }else{
-            20.sp
-        },
-        textAlign = TextAlign.Justify,
-        modifier = modifier.padding(
-            start = dimensionResource(R.dimen.medium_padding),
-            end = dimensionResource(R.dimen.medium_padding)
+    Card(
+        shape = RectangleShape,
+        colors = CardColors(
+            contentColor = MaterialTheme.colorScheme.onTertiary,
+            containerColor = MaterialTheme.colorScheme.inverseSurface,
+            disabledContentColor = MaterialTheme.colorScheme.surface,
+            disabledContainerColor = MaterialTheme.colorScheme.background
         )
-    )
+    ) {
+        Text(
+            text = stringResource(desc),
+            fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
+            color = MaterialTheme.colorScheme.surface,
+            fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
+                30.sp
+            }else{
+                15.sp
+            },
+            lineHeight = if(windowSize == WindowWidthSizeClass.Expanded){
+                30.sp
+            }else{
+                15.sp
+            },
+            textAlign = TextAlign.Justify,
+            modifier = modifier.padding(
+                start = dimensionResource(R.dimen.medium_padding),
+                end = dimensionResource(R.dimen.medium_padding)
+            ).padding(dimensionResource(R.dimen.medium_padding))
+        )
+    }
 }
 
 @Composable
@@ -350,6 +369,7 @@ fun TittleText(
     Text(
         text = stringResource(name),
         fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
+        color = MaterialTheme.colorScheme.surface,
         fontSize = if(windowSize == WindowWidthSizeClass.Expanded){
             60.sp
         }else{
