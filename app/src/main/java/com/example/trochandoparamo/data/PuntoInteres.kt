@@ -13,6 +13,8 @@ data class PuntoInteres (
     val imgs: List<Int> = mutableListOf(),
     @StringRes
     val ubi: Int = 0,
+    val latitud: Double,
+    val longitud: Double,
     val zona: ZoneEnum,
     val ratingStars : Int
 )

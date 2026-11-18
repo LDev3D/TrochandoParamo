@@ -17,7 +17,7 @@
     <string name="acampada_siete_cuerros_ubi">https://osm.org/go/YOAXL9d-?m=</string>
     <string name="bosque_chiticuy">Bosque de Frailejones río Chiticuy</string>
     <string name="bosque_chiticuy_desc">Cerca del nacimiento del río Chiticuy existe un pequeño bosque de frailejones donde podemos encontrar múltiples especies de espeletias que dan refugio a múltiples especies de anfibios e insectos de páramo.</string>
-    <string name="bosque_chiticuy_ubi">https://osm.org/go/YMq_tXf--?m=</string>
+    <string name="bosque_chiticuy_ubi">https://osm.org/go/YOAWHVbM?m=</string>
     <string name="bosque_guinas">Bosque de Frailejones páramo de Güinas</string>
     <string name="bosque_guinas_desc">A mitad de camino hacia la laguna negra en el páramo de Güinas hay un bosque de frailejones cuyas flores doradas compiten con el sol en belleza.</string>
     <string name="bosque_guinas_ubi">https://osm.org/go/YOBM1x2--?m=</string>
@@ -71,7 +71,7 @@
     <string name="laguna_cazadero_ubi">https://osm.org/go/YOBMQoIq--?m=</string>
     <string name="laguna_chica">Laguna chica</string>
     <string name="laguna_chica_desc">Mientras nos acercamos a la laguna de pan de azúcar podremos acercarnos a varias lagunas encantadas que con el tiempo su nombre ancestral ha caído en el olvido. Pero cuidado, no por no tener nombre dejan de estar encantadas.</string>
-    <string name="laguna_chica_ubi">https://osm.org/go/YOAU7qwh-?m=</string>
+    <string name="laguna_chica_ubi">https://osm.org/go/YOAU7rrkA-?m=</string>
     <string name="laguna_de_los_patos">Laguna de los patos</string>
     <string name="laguna_de_los_patos_desc">Cerca a la laguna del alto, en Cerinza, se encuentra un nutrido complejo lagunar dentro del cual está la laguna de los patos que se caracteriza por el perqueño cerro que la custodia y sus aguas claras.</string>
     <string name="laguna_de_los_patos_ubi">https://osm.org/go/YOAXOHpc-?m=</string>
@@ -204,7 +204,7 @@
     <string name="descripci_n_del_punto_de_inter_s">Descripción del punto de interés</string>
     <string name="ubicaci_n_del_punto_de_inter_s">Ubicación del punto de interés</string>
     <string name="qu_tipo_de_lugar_es">¿Qué tipo de lugar es?</string>
-    <string name="en_qu_p_ramo_se_encuentra">¿En qué páramo se encuentra?</string>
+    <string name="en_qu_p_ramo_se_encuentra">¿En qué páramo está?</string>
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>
     <string name="a_adir_un_nuevo_lugar">Añadir un nuevo lugar</string>
@@ -213,4 +213,6 @@
     <string name="seleccionar_p_ramo">Seleccionar páramo</string>
     <string name="bot_n_para_ir_atr_s">Botón para ir atrás</string>
     <string name="rating_star">Rating Star</string>
+    <string name="quieres_a_adir_un_nuevo_lugar">¿Quieres añadir un nuevo lugar?</string>
+    <string name="imagen_de_punto_de_inter_s">Imagen de punto de interés</string>
 </resources>

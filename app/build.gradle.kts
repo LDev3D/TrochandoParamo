@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation("org.osmdroid:osmdroid-android:6.1.20")
+    implementation("androidx.compose.material3:material3-window-size-class")
 
     testImplementation(libs.junit)
 

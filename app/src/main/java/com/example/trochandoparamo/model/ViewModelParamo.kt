@@ -1,6 +1,7 @@
 package com.example.trochandoparamo.model
 
-import androidx.annotation.DrawableRes
+import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.ViewModel
 import com.example.trochandoparamo.data.CatEnum
 import com.example.trochandoparamo.data.DataSetParamo
 import com.example.trochandoparamo.data.FilterEnum
@@ -12,35 +13,28 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class ViewModelParamo {
-    private val _uiState = MutableStateFlow(UiStateParamo(
-        currentZone = ZoneEnum.DEFAULT,
-        currentCat = CatEnum.DEFAULT,
-        currentInterestPoint = DataSetParamo().puntos[0],
-        currentFilter = FilterEnum.ALL,
-        showingFilterList = false,
-        currentFilterList = mutableListOf()
-    ))
+class ViewModelParamo: ViewModel() {
+    private val _uiState = MutableStateFlow(UiStateParamo()
+    )
 
-    val UiState: StateFlow<UiStateParamo> = _uiState.asStateFlow()
+    val uiState: StateFlow<UiStateParamo> = _uiState.asStateFlow()
 
-    fun ReturnFilterEnums(): List<FilterEnum>{
+    fun ReturnFilterEnums(): List<FilterEnum> {
         val filterList = mutableListOf<FilterEnum>()
-        for (x in FilterEnum.entries){
+        for (x in FilterEnum.entries) {
             filterList.add(x)
         }
         return filterList
     }
 
-    fun setCurrentFilter(filter: FilterEnum){
+    fun SetCurrentFilterList(filter: FilterEnum) {
         var filtList: List<FilterItem> = mutableListOf()
-        when(filter){
+        when (filter) {
             FilterEnum.CATEGORY -> filtList = DataSetParamo().catFilters
             FilterEnum.ZONE -> filtList = DataSetParamo().zoneFilters
             FilterEnum.ALL -> {}
         }
-        _uiState.update {
-            uiState ->
+        _uiState.update { uiState ->
             uiState.copy(
                 currentFilter = filter,
                 currentFilterList = filtList,
@@ -49,16 +43,46 @@ class ViewModelParamo {
         }
     }
 
-    /*fun getFilteredList(): List<PuntoInteres>{
-        val filteredList: List<PuntoInteres> = mutableListOf()
-        when(UiState.value.currentFilter){
+    fun SetZoneOrCatToPerformSearch(cat: CatEnum, zone: ZoneEnum){
+        _uiState.update {
+            uiState ->
+            uiState.copy(
+                currentCat = cat,
+                currentZone = zone
+            )
+        }
+    }
+
+    fun getFilteredList(): List<PuntoInteres>{
+        val filteredList: MutableList<PuntoInteres> = mutableListOf()
+        when (_uiState.value.currentFilter) {
             FilterEnum.ZONE -> {
-                for (x in DataSetParamo().puntos){
-                    if (x.zona ==)
+                for (x in DataSetParamo().puntos) {
+                    if (x.zona == _uiState.value.currentZone) {
+                        filteredList.add(x)
+                    }
                 }
             }
-            FilterEnum.CATEGORY -> {}
-            FilterEnum.ALL -> {}
+            FilterEnum.CATEGORY -> {
+                for(y in DataSetParamo().puntos){
+                    if(y.categoria == _uiState.value.currentCat){
+                        filteredList.add(y)
+                    }
+                }
+            }
+            FilterEnum.ALL -> {
+                filteredList.addAll(DataSetParamo().puntos)
+            }
         }
-    }*/
+        return filteredList
+    }
+
+    fun setCurrentPlace(place: PuntoInteres){
+        _uiState.update {
+            uiState ->
+            uiState.copy(
+                currentInterestPoint = place
+            )
+        }
+    }
 }
